@@ -504,5 +504,15 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
                 return ResourceManager.GetString("SmokeSignals", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon trident {
+            get {
+                object obj = ResourceManager.GetObject("trident", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
