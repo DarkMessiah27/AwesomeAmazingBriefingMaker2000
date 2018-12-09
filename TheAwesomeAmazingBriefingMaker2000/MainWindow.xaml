@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheAwesomeAmazingBriefingMaker2000"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1123.666" Width="1026.5">
+        Title="The Awesome Amazing Briefing Maker 2000" Height="1023.832" Width="1026.5">
     <Grid>
-        <Label Content="Welcome to the Awesome Amazing Briefing Maker 2000!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <Label Content="Fill in the text boxes on each tab below and hit the &quot;Generate&quot; button." HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Welcome to the Awesome Amazing Briefing Maker 2000!" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Label Content="Fill in the text boxes on each tab below and hit the &quot;Generate&quot; button." HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="20"/>
+
         <TabControl Margin="10,110,10,10">
             <TabItem Header="Mission Notes">
                 <Grid Background="#FFE5E5E5">
@@ -16,20 +17,16 @@
                     <Label Content="Describe, in a few short sentences (preferably just one) what the conditions for victory are." HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Victory is achieved when the allied assault is halted, or we receive orders to retreat to Oetzendorf.'" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbVictoryConditions" Height="70" Margin="10,75,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                    <TextBox x:Name="tbVictoryConditions" Height="70" Margin="10,75,522,0" VerticalAlignment="Top" />
                     <Label Content="Defeat Conditions:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Describe, in a few short sentences (preferably just one) what the conditions for defeat are." HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Defeat occurs when, at any point, our positions are overrun or we become combat ineffective due to a high amount of casualties.'" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbDefeatConditions" Height="70" Margin="10,219,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                    <TextBox x:Name="tbDefeatConditions" Height="70" Margin="10,219,522,0" VerticalAlignment="Top" />
                 </Grid>
             </TabItem>
             <TabItem Header="Admin Tab">
-                <Grid Background="#FFE5E5E5" ShowGridLines="True">
+                <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="86*"/>
                         <RowDefinition Height="859*"/>
@@ -38,18 +35,13 @@
                     <Label Content="Our missions can be ended by the Zeus or an admin by clicking a button on the Admin tab during the mission. On this tab, you will need to specify for each" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Height="16" Width="822"/>
                     <Label Content="ending condition the name of the button and the actual message that appears on the screen for players when that button is pressed." HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="16" Width="702"/>
                     <Label Content="You DON'T have to fill in all of these! Use as many as you think you need." HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Grid Grid.Row="1" ShowGridLines="True">
+                    <Grid x:Name="grAdminTab" Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Victory messages" HorizontalAlignment="Center" Margin="223,10,173,0" VerticalAlignment="Top" FontWeight="Bold" Width="100"/>
                         <Label Content="Button text:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
-
-
-
-
-
 
                         <Label Content="Defeat messages" Grid.Column="1" HorizontalAlignment="Center" Margin="214,13,187,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Message:" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
@@ -101,27 +93,27 @@
                         <TextBox x:Name="tbDefeatButton5" Height="23" Margin="85,416,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
                         <TextBox x:Name="tbDefeatMessage5" Height="23" Margin="85,446,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
 
-
-
                     </Grid>
-
-
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zeus Notes">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Fill in any notes for the Zeus with instructions for the mission." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+                    <Label Content="Only the Zeus will see this tab." HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
+                    <Label Content="You only need to fill this in if you are not going to Zeus the mission yourself!" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'Let the players take the first time fairly easily. Put down a mortar bombardment when they get to the church.'" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'If the players are going too fast, spawn in a counter-attack coming from the city, but don't include more than 2 tanks!'" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbZeusNotes" Margin="10,150,469,0" Height="249" VerticalAlignment="Top" />
                 </Grid>
             </TabItem>
             <TabItem Header="Situation">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="This tab should give an idea of why this mission is happening. Describe things that have happened to lead up to this mission." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-                    <RichTextBox Margin="10,117,469,0" Height="249" VerticalAlignment="Top">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text=""/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
+                    <Label Content="This tab should give an idea of why this mission is happening. Describe things that have happened to lead up to this mission." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="tbSituation" Margin="10,117,469,0" Height="249" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Having pushed through Oetzendorf, we have cleared the way for our advance east. For now, our mission is to hold off the allied advance" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
                     <Label Content="to allow 5.Kompanie in the north to retreat, so that they may reorganize.'" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
-
                 </Grid>
             </TabItem>
             <TabItem Header="Mission">
@@ -136,7 +128,7 @@
                     <Label Content="Concept of the Operation:" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="A description of the way the operation should unfold." HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Setup within Oetzendorf to block the allied advance, whilst 5.Kompanie retreats in the north.'" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'Setup within Oetzendorf to block the allied advance, whilst 5. Kompanie retreats in the north.'" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbConceptOfOperation" Height="22" Margin="10,192,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
                     <Label Content="Timings:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -144,33 +136,17 @@
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top"/>
                     <Label Content="'0600hrs - 1. Kompanie (Pz.Pi.) will move from Oetzendorf to releave 5. Kompanie at the bridge.'" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top"/>
                     <Label Content="'0700hrs - 1. Kompanie (Pz.Pi) will take up station at Klein Bunstorf.'" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbTimings" Height="22" Margin="10,311,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbTimings" Height="140" Margin="10,306,522,0" VerticalAlignment="Top"/>
 
-                    <Label Content="Control Measures:" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Any specific boundary areas." HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Do not stray further south than Jastorf to prevent confusion and friendly fire incidents with 4. Kompanie.'" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbControlMeasures" Height="22" Margin="10,412,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Label Content="Control Measures:" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Any specific boundary areas." HorizontalAlignment="Left" Margin="10,463,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,481,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'Do not stray further south than Jastorf to prevent confusion and friendly fire incidents with 4. Kompanie.'" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbControlMeasures" Height="22" Margin="10,525,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                    <Label Content="Rules of Engagement:" HorizontalAlignment="Left" Margin="10,434,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="The rules of engagement. Only change these if they differ from the default!" HorizontalAlignment="Left" Margin="10,450,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbRulesOfEngagement" Height="140" Margin="10,476,522,0" VerticalAlignment="Top">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text="No one is to engage a target except under the following conditions:"/>
-                            </Paragraph>
-                            <Paragraph>
-                                <Run Text="- You or your Gruppe is being actively engaged by identified enemy targets"/>
-                                <Run Text=","/>
-                            </Paragraph>
-                            <Paragraph>
-                                <Run Text="- Your well being or that of a friendly unit is in imminent danger,"/>
-                            </Paragraph>
-                            <Paragraph>
-                                <Run Text="- You are ordered to by a superior."/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
+                    <Label Content="Rules of Engagement:" HorizontalAlignment="Left" Margin="10,547,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="The rules of engagement. Only change these if they differ from the default!" HorizontalAlignment="Left" Margin="10,563,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbRulesOfEngagement" Height="140" Margin="10,589,522,0" VerticalAlignment="Top" Text="No one is to engage a target except under the following conditions:&#xD;&#xA;    - You or your Gruppe is being actively engaged by identified enemy targets,&#xD;&#xA;    - Your well being or that of a friendly unit is in imminent danger,&#xD;&#xA;    - You are ordered to by a superior." />
 
                 </Grid>
             </TabItem>
@@ -199,108 +175,104 @@
                     <Label Content="Any extra intelligence about our forces, the enemy, or the terrain that you believe should be included." HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,366,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Three small hills to the east of Medenine provide good positions for enemy observers or commanders and should be closely watched.'" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbPertinentInformation" Height="140" Margin="10,410,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                    <TextBox x:Name="tbPertinentInformation" Height="140" Margin="10,410,522,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
             <TabItem Header="Enemy Forces">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="Name of the enemy forces:" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'British Second Army'" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbNameEnemyForces" Height="70" Margin="10,65,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
-                    <Label Content="Composition:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Describe and weather conditions. Light/heavy fog, rain, clear skies, etc." HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Exact enemy strength unknown. Expect British infantry, supported by American Armour.' | '1 Infantry Company armed with small arms, 1 Machine Gun platoon, 1 Tank Platoon.'" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbComposition" Height="22" Margin="10,218,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid Background="#FFE5E5E5">
+                        <Label Content="Name of the enemy forces:" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'British Second Army'" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbNameEnemyForces" Height="70" Margin="10,65,522,0" VerticalAlignment="Top"/>
+                        <Label Content="Composition:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="Describe and weather conditions. Light/heavy fog, rain, clear skies, etc." HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'Exact enemy strength unknown. Expect British infantry, supported by American Armour.' | '1 Infantry Company armed with small arms, 1 Machine Gun platoon, 1 Tank Platoon.'" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbEnemyComposition" Height="22" Margin="10,218,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                    <Label Content="Location:" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Known location of enemies." HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Approaching from the west towards the Rosche Canal on foot.'" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbLocation" Height="22" Margin="10,323,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="Location:" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="Known location of enemies." HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'Approaching from the west towards the Rosche Canal on foot.'" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbLocation" Height="22" Margin="10,323,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                    <Label Content="Possible Enemy Actions:" HorizontalAlignment="Left" Margin="10,346,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Possible actions the enemy could take during the mission.." HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'The enemy will send scouts and small waves of infantry to determine our weak points before commiting any of their armour.'" HorizontalAlignment="Left" Margin="10,401,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Once enemy tanks show up, we know they have started their main push.'" HorizontalAlignment="Left" Margin="10,416,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbPossibleEnemyActions" Height="22" Margin="10,442,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="Possible Enemy Actions:" HorizontalAlignment="Left" Margin="10,346,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="Possible actions the enemy could take during the mission.." HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'The enemy will send scouts and small waves of infantry to determine our weak points before commiting any of their armour.'" HorizontalAlignment="Left" Margin="10,401,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'Once enemy tanks show up, we know they have started their main push.'" HorizontalAlignment="Left" Margin="10,416,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbPossibleEnemyActions" Height="22" Margin="10,442,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                    <Label Content="Defensive Fires:" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Enemy Artillery is listed here, otherwise put 'Unknown' or 'None'." HorizontalAlignment="Left" Margin="10,482,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,503,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'The enemy has mortar support.'" HorizontalAlignment="Left" Margin="10,521,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbDefensiveFires" Height="22" Margin="10,547,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="Defensive Fires:" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="Enemy Artillery is listed here, otherwise put 'Unknown' or 'None'." HorizontalAlignment="Left" Margin="10,482,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,503,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'The enemy has mortar support.'" HorizontalAlignment="Left" Margin="10,521,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbDefensiveFires" Height="22" Margin="10,547,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                    <Label Content="Enemy Air Presence:" HorizontalAlignment="Left" Margin="10,569,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Any enemy planes operating in the area. If there aren't any, put 'None'." HorizontalAlignment="Left" Margin="10,587,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,608,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Unknown, but the enemy has complete air dominance.'" HorizontalAlignment="Left" Margin="10,626,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbEnemyAirPresence" Height="22" Margin="10,652,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="Enemy Air Presence:" HorizontalAlignment="Left" Margin="10,569,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="Any enemy planes operating in the area. If there aren't any, put 'None'." HorizontalAlignment="Left" Margin="10,587,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,608,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'Unknown, but the enemy has complete air dominance.'" HorizontalAlignment="Left" Margin="10,626,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbEnemyAirPresence" Height="22" Margin="10,652,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                    <Label Content="Future intentions:" HorizontalAlignment="Left" Margin="10,675,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="What are the goals of the enemy?" HorizontalAlignment="Left" Margin="10,693,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,714,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'The Allies will want to cross the canal as quickly and painlessly as possible. If one sector puts up to much resistance, they'll try somewhere else.'" HorizontalAlignment="Left" Margin="10,732,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbFutureIntentions" Height="22" Margin="10,758,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="Future intentions:" HorizontalAlignment="Left" Margin="10,675,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label Content="What are the goals of the enemy?" HorizontalAlignment="Left" Margin="10,693,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,714,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'The Allies will want to cross the canal as quickly and painlessly as possible. If one sector puts up to much resistance, they'll try somewhere else.'" HorizontalAlignment="Left" Margin="10,732,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbFutureIntentions" Height="22" Margin="10,758,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                </Grid>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Friendly Forces">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="Name of the friendly forces:" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Example:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'2. Panzer-Division'" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbNameFriendlyForces" Height="70" Margin="10,65,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid x:Name="grFriendlyForces" Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Name of the friendly forces:" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="158"/>
+                        <Label Content="Example:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Height="16" Width="47"/>
+                        <Label Content="'2. Panzer-Division'" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="16" Width="100"/>
+                        <TextBox x:Name="tbNameFriendlyForces" Height="70" Margin="10,81,33,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="cbUseDefaultFriendlyForcesName" Content="Use default" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" 
+                                  Height="15" Width="80" Checked="CbUseDefaultFriendlyForcesNameChanged" Unchecked="CbUseDefaultFriendlyForcesNameChanged" IsChecked="True"/>
 
-                    <Label Content="Composition:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Describe the makeup of the friendly forces." HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top"/>
-                    <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbNameFriendlyForces_Copy" Height="70" Margin="10,213,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
-                    <CheckBox x:Name="cbUseDefaultFriendlyComposition" Content="Use default" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Composition:" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="75"/>
+                        <Label Content="Describe the makeup of the friendly forces." HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top" Height="16" Width="227"/>
+                        <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="16" Width="195"/>
+                        <TextBox x:Name="tbFriendlyComposition" Height="70" Margin="10,236,33,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="cbUseDefaultFriendlyComposition" Content="Use default" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" 
+                                  Height="15" Width="80" Checked="CbUseDefaultFriendlyCompositionChanged" Unchecked="CbUseDefaultFriendlyCompositionChanged" IsChecked="True"/>
 
-                    <Label Content="Attachments/Detachments:" HorizontalAlignment="Left" Margin="10,283,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Any attached or detached elements or units." HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top"/>
-                    <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="cbUseDefaultAttachments" Content="Use default" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbAttachments" Height="70" Margin="10,361,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                        <Label Content="Attachments/Detachments:" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="154"/>
+                        <Label Content="Any attached or detached elements or units." HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top" Height="16" Width="234"/>
+                        <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,366,0,0" VerticalAlignment="Top" Height="16" Width="195"/>
+                        <TextBox x:Name="tbAttachments" Height="70" Margin="10,404,33,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="cbUseDefaultAttachments" Content="Use default" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" 
+                                  Height="15" Width="80" Checked="CbUseDefaultAttachmentsChanged" Unchecked="CbUseDefaultAttachmentsChanged" IsChecked="True"/>
 
-                    <Label Content="Assets:" HorizontalAlignment="Left" Margin="10,431,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="List any special equipment or vehicles the the friendly side has." HorizontalAlignment="Left" Margin="10,449,0,0" VerticalAlignment="Top"/>
-                    <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="cbUseDefaultAssets" Content="Use default" HorizontalAlignment="Left" Margin="10,489,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbAssets" Height="70" Margin="10,509,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                        <Label Content="Assets:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="39" Grid.Column="1"/>
+                        <Label Content="List any special equipment or vehicles the the friendly side has." HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" Height="16" Width="331" Grid.Column="1"/>
+                        <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Height="16" Width="195" Grid.Column="1"/>
+                        <TextBox x:Name="tbAssets" Height="70" Margin="10,81,33,0" VerticalAlignment="Top" Grid.Column="1"/>
+                        <CheckBox x:Name="cbUseDefaultAssets" Content="Use default" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" 
+                                  Height="15" Width="80" Grid.Column="1" Checked="CbUseDefaultAssetsChanged" Unchecked="CbUseDefaultAssetsChanged" IsChecked="True"/>
 
-                    <Label Content="Supporting Fires:" HorizontalAlignment="Left" Margin="10,580,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="List any artillery the friendly side can call on." HorizontalAlignment="Left" Margin="10,598,0,0" VerticalAlignment="Top"/>
-                    <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,617,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="cbUseDefaultSupportingFires" Content="Use default" HorizontalAlignment="Left" Margin="10,638,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbSupportingFires" Height="70" Margin="10,658,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                        <Label Content="Supporting Fires:" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="97" Grid.Column="1"/>
+                        <Label Content="List any artillery the friendly side can call on." HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Height="16" Width="233" Grid.Column="1"/>
+                        <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top" Height="16" Width="195" Grid.Column="1"/>
+                        <TextBox x:Name="tbSupportingFires" Height="70" Margin="10,236,33,0" VerticalAlignment="Top" Grid.Column="1"/>
 
-                    <Label Content="Friendly Air Presence:" HorizontalAlignment="Left" Margin="10,728,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Any friendly planes operating in the area. If there aren't any, put 'None'." HorizontalAlignment="Left" Margin="10,746,0,0" VerticalAlignment="Top"/>
-                    <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,765,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="cbUseDefaultFriendlyAirPresence" Content="Use default" HorizontalAlignment="Left" Margin="10,786,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbFriendlyAirPresence" Height="70" Margin="10,806,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
-                </Grid>
+                        <Label Content="Friendly Air Presence:" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="122" Grid.Column="1"/>
+                        <Label Content="Any friendly planes operating in the area. If there aren't any, put 'None'." HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top" Height="16" Width="378" Grid.Column="1"/>
+                        <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,363,0,0" VerticalAlignment="Top" Height="16" Width="195" Grid.Column="1"/>
+                        <TextBox x:Name="tbFriendlyAirPresence" Height="70" Margin="10,404,33,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Signals">
                 <Grid Background="#FFE5E5E5">
@@ -311,21 +283,23 @@
                     <Label Content="Codewords:" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Rain Rain Rain - Danger close artillery bombardment'" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbCodewords" Height="70" Margin="10,168,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                    <TextBox x:Name="tbCodewords" Height="70" Margin="10,168,522,0" VerticalAlignment="Top"/>
 
                     <Label Content="Passwords:" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Challenge: Flash'" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Password: Thunder'" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Countersign: Welcome'" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top"/>
-                    <RichTextBox x:Name="rtbPasswords" Height="70" Margin="10,333,522,0" VerticalAlignment="Top">
-                        <FlowDocument/>
-                    </RichTextBox>
+                    <TextBox x:Name="tbPasswords" Height="70" Margin="10,333,522,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>
         </TabControl>
+        <Label Content="What country will we be playing as?" HorizontalAlignment="Left" Margin="805,53,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <RadioButton x:Name="rbGermany" Content="Germany" HorizontalAlignment="Left" Margin="805,76,0,0" VerticalAlignment="Top" IsChecked="true" Checked="RbGermany_Checked"/>
+        <RadioButton x:Name="rbOther" Content="Other" HorizontalAlignment="Left" Margin="805,96,0,0" VerticalAlignment="Top" Checked="RbOther_Checked"/>
+        <Button x:Name="btnGenerate" Content="Generate!" HorizontalAlignment="Left" Margin="683,53,0,0" VerticalAlignment="Top" 
+                            Width="117" Height="35" FontWeight="Bold" FontSize="22" Padding="0,0,0,0" Click="BtnGenerate_Click"/>
+        <Button x:Name="btnSelectFolder" Content="Select mission folder" HorizontalAlignment="Left" Margin="683,93,0,0" VerticalAlignment="Top" Width="117" Click="BtnSelectFolder_Click"/>
     </Grid>
 </Window>

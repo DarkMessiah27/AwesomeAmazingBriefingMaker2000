@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,209 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ATRespawnWave" xml:space="preserve">
+    <value>_adminState = call BIS_fnc_admin;
+_uid = getPlayerUID player;
+if (
+(_adminState != 0) ||
+(God isEqualTo player) ||
+(_uid == "76561198006804011") ||
+(_uid == "76561197989925440") ||
+(_uid == "76561197970317496") ||
+(_uid == "76561197983143701") ||
+(_uid == "76561197985738940") ||
+(_uid == "76561198096113294")
+) then {
+NEWTAB("Admin Tab")
+&lt;br/&gt;The server admin, the Zeus (if present), and all Council members have access to these options.
+&lt;br/&gt;
+&lt;br/&gt;&lt;font color='#70db70' size='14'&gt;Respawn Wave:&lt;/font&gt;
+&lt;br/&gt;This is used to call a respawn wave on demand, it will give the players in spectator a single respawn with a 10 second timer.
+&lt;br/&gt;
+&lt;br/&gt;If the admin is dead and in spectator they can also trigger a respawn by typing the command &lt;font color='#FF8C00'&gt;#respawnWave&lt;/font&gt; in spectator chat.
+&lt;br/&gt;
+&lt;br/&gt;This must NOT be used in missions that already have respawning enabled.
+&lt;br/&gt;    &lt;execute expression='FW_RespawnTickets = 1; publicVariable ""FW_RespawnTickets""; 10 remoteExec [""setPlayerRespawnTime""]; [] spawn { sleep 30; FW_RespawnTickets = 0; publicVariable ""FW_RespawnTickets""; 10e10 remoteExec [""setPlayerRespawnTime""];};'&gt;Call Respawn Wave&lt;/execute&gt;
+&lt;br/&gt;</value>
+  </data>
+  <data name="ClanName" xml:space="preserve">
+    <value>2. Panzer-Division</value>
+  </data>
+  <data name="DefaultEnglishAttachments" xml:space="preserve">
+    <value>1x Tank crew</value>
+  </data>
+  <data name="DefaultEnglishFriendlyComposition" xml:space="preserve">
+    <value>1x Company consisting of:
+
+    1x Company HQ
+    1x Reserve Section
+
+    2x Platoons, each consiting of:
+        1x Platoon HQ
+        3x Sections</value>
+  </data>
+  <data name="DefaultGermanAssets" xml:space="preserve">
+    <value>1x Panzerkampfwagen IV Ausf. H</value>
+  </data>
+  <data name="DefaultGermanAttachments" xml:space="preserve">
+    <value>1x Panzerbesatzung</value>
+  </data>
+  <data name="DefaultGermanFriendlyComposition" xml:space="preserve">
+    <value>1x Kompanie consisting of:
+
+    1x Kompanietrupp
+    1x Ersatztruppen
+
+    2x Züge, each consiting of:
+        1x Zugtrupp
+        3x Gruppen</value>
+  </data>
+  <data name="EndingConditionsNotSetError" xml:space="preserve">
+    <value>You need to fill in at least one victory and one defeat condition in the Admin Tab!</value>
+  </data>
+  <data name="EnglishCallSigns" xml:space="preserve">
+    <value>HQ - Company HQ
+
+1-0: 1 Platoon HQ
+1-1: 1 Platoon, 1 Section
+1-2: 1 Platoon, 2 Section
+1-3: 1 Platoon, 3 Section
+
+2-0: 2 Platoon HQ
+2-1: 2 Platoon, 1 Section
+2-2: 2 Platoon, 2 Section
+2-3: 2 Platoon, 3 Section
+
+Eva - The tank.</value>
+  </data>
+  <data name="EnglishEnemyForces" xml:space="preserve">
+    <value>Enemy Forces</value>
+  </data>
+  <data name="EnglishFriendlyForces" xml:space="preserve">
+    <value>Friendly Forces</value>
+  </data>
+  <data name="EnglishIntelligence" xml:space="preserve">
+    <value>Intelligence</value>
+  </data>
+  <data name="EnglishMission" xml:space="preserve">
+    <value>Mission</value>
+  </data>
+  <data name="EnglishSignals" xml:space="preserve">
+    <value>Signals</value>
+  </data>
+  <data name="EnglishSituation" xml:space="preserve">
+    <value>Situation</value>
+  </data>
+  <data name="GenerationSuccessMessage" xml:space="preserve">
+    <value>Your briefing was successfully generated! Please run your mission in the editor and check if everything is correct.</value>
+  </data>
+  <data name="GenericErrorMessage" xml:space="preserve">
+    <value>Something went wrong while trying to generate the briefing. An error log was created in the location of the Briefing Maker's .exe. Please send it to Brauer.</value>
+  </data>
+  <data name="GermanCallSigns" xml:space="preserve">
+    <value>HQ - Kompanietrupp
+
+1-0: 1 Zug, Zugtrupp
+1-1: 1 Zug, 1 Gruppe
+1-2: 1 Zug, 2 Gruppe
+1-3: 1 Zug, 3 Gruppe
+
+2-0: 2 Zug, Zugtrupp
+2-1: 2 Zug, 1 Gruppe
+2-2: 2 Zug, 2 Gruppe
+2-3: 2 Zug, 3 Gruppe
+
+Eva - The tank.</value>
+  </data>
+  <data name="GermanEnemyForces" xml:space="preserve">
+    <value>Feindliche Kräfte</value>
+  </data>
+  <data name="GermanFriendlyForces" xml:space="preserve">
+    <value>Eigene Kräfte</value>
+  </data>
+  <data name="GermanIntelligence" xml:space="preserve">
+    <value>Aufklärung</value>
+  </data>
+  <data name="GermanMission" xml:space="preserve">
+    <value>Auftrag</value>
+  </data>
+  <data name="GermanSignals" xml:space="preserve">
+    <value>Gefechtssignale</value>
+  </data>
+  <data name="GermanSituation" xml:space="preserve">
+    <value>Lage</value>
+  </data>
+  <data name="HandSignals" xml:space="preserve">
+    <value>Waving like an idiot - I'm friendly, don't shoot me
+Spamming Q and E, aka the 'friendly dance' - I'm friendly, don't shoot me</value>
+  </data>
+  <data name="IOErrorMessage" xml:space="preserve">
+    <value>Could not find the briefing.sqf or endConditions.sqf. Please make sure you select the root folder of your mission (the folder that has the mission.sqm in it).</value>
+  </data>
+  <data name="JapaneseEnemyForces" xml:space="preserve">
+    <value>Tekigun</value>
+  </data>
+  <data name="JapaneseFriendlyForces" xml:space="preserve">
+    <value>Yuukouteki na riki</value>
+  </data>
+  <data name="JapaneseIntelligence" xml:space="preserve">
+    <value>Chisei</value>
+  </data>
+  <data name="JapaneseMission" xml:space="preserve">
+    <value>Mokuteki</value>
+  </data>
+  <data name="JapaneseSignals" xml:space="preserve">
+    <value>Shingou</value>
+  </data>
+  <data name="JapaneseSituation" xml:space="preserve">
+    <value>Joukyou</value>
+  </data>
+  <data name="PathNotSetErrorMessage" xml:space="preserve">
+    <value>You need to set the path to your mission folder first! Please click the "Select mission folder" button and select the root folder of your mission (the folder with the mission.sqm in it).</value>
+  </data>
+  <data name="Prowords" xml:space="preserve">
+    <value>Ende - Out, reply not required
+
+Kommen - Over, reply to me
+
+Actual - Used for the commander of a unit.
+Example: '1 Actual' is the Zugführer of 1. Zug, not his Funker, who would identify with '1-0'.</value>
+  </data>
+  <data name="RadioFrequencies" xml:space="preserve">
+    <value>Frequency 51.00 MHz - Kompanie Net
+Frequency 31.00 MHz - 1 Zug Sub-Net
+Frequency 54.00 MHz - 2 Zug Sub-Net</value>
+  </data>
+  <data name="RussianEnemyForces" xml:space="preserve">
+    <value>Вражеские Силы</value>
+  </data>
+  <data name="RussianFriendlyForces" xml:space="preserve">
+    <value>Дружественные Силы</value>
+  </data>
+  <data name="RussianIntelligence" xml:space="preserve">
+    <value>Разведка</value>
+  </data>
+  <data name="RussianMission" xml:space="preserve">
+    <value>Задача</value>
+  </data>
+  <data name="RussianSignals" xml:space="preserve">
+    <value>сигнальная</value>
+  </data>
+  <data name="RussianSituation" xml:space="preserve">
+    <value>Ситуация</value>
+  </data>
+  <data name="SmokeSignals" xml:space="preserve">
+    <value>Green - Go signal
+Red - Stop/halt signal
+Purple - Request support
+Orange - Need a medic
+Blue - Friendly position
+Yellow - Regroup on that position
+White - Used for concealment only</value>
+  </data>
 </root>

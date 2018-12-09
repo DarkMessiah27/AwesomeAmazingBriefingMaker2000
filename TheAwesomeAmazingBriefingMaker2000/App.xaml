@@ -10,6 +10,14 @@
         <Style TargetType="{x:Type RichTextBox}">
             <Setter Property="AcceptsTab" Value="True"/>
         </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="SpellCheck.IsEnabled" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        </Style>
         <Style TargetType="{x:Type Label}">
             <Setter Property="Padding" Value="0"/>
         </Style>
