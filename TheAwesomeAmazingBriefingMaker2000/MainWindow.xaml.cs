@@ -175,22 +175,75 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     hasCodeWords = true;
             }
 
-            bool hasPassWords = false;
-            foreach (string cd in codeWords)
+            bool hasPasswords = false;
+            foreach (string pw in passwords)
             {
-                if (string.IsNullOrWhiteSpace(cd) == false)
-                    hasPassWords = true;
+                if (string.IsNullOrWhiteSpace(pw) == false)
+                    hasPasswords = true;
             }
 
             if (hasCodeWords)
             {
-                briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Add(
-                    new Section(name: "3. Codewords:", fontColour: "#70db70", size: 14, text: codeWords));
+                Section codeWordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "3. Codewords:");
+                if (codeWordsSection == null)
+                {
+                    //briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Add(
+                    //    new Section(name: "3. Codewords:", fontColour: "#70db70", size: 14, text: codeWords));
+
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Insert(6,
+                        new Section(name: "3. Codewords:", fontColour: "#70db70", size: 14, text: codeWords));
+                }
+                else
+                {
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "3. Codewords:").Text = codeWords;
+                }
             }
-            if (hasPassWords)
+            else
             {
-                briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Add(
-                    new Section(name: "4. Passwords:", fontColour: "#70db70", size: 14, text: passwords));
+                Section codeWordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "3. Codewords:");
+
+                if (codeWordsSection != null)
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Remove(codeWordsSection);
+            }
+
+            if (hasPasswords)
+            {
+                Section passwordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "4. Passwords:");
+                if (passwordsSection == null)
+                {
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Add(
+                        new Section(name: "4. Passwords:", fontColour: "#70db70", size: 14, text: passwords));
+                }
+                else
+                {
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "4. Passwords:").Text = passwords;
+                }
+            }
+            else
+            {
+                Section passwordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "4. Passwords:");
+
+                if (passwordsSection != null)
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Remove(passwordsSection);
+            }
+
+            // Assign localised text to Signal tab where necessary
+            switch (briefing.Country)
+            {
+                case Country.Germany:
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals"))
+                        .Sections.Find(s => s.Name == "A. Call Signs:").Text = Properties.Resources.GermanCallSigns.Split('\n').ToList();
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals"))
+                        .Sections.Find(s => s.Name == "C. Radio Frequencies:").Text = Properties.Resources.GermanRadioFrequencies.Split('\n').ToList();
+                    break;
+                case Country.Japan:
+                case Country.Russia:
+                default:
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals"))
+                        .Sections.Find(s => s.Name == "A. Call Signs:").Text = Properties.Resources.EnglishCallSigns.Split('\n').ToList();
+                    briefing.Tabs.Find(t => t.Name.Contains("Signals"))
+                        .Sections.Find(s => s.Name == "C. Radio Frequencies:").Text = Properties.Resources.EnglishRadioFrequencies.Split('\n').ToList();
+                    break;
             }
 
             #endregion

@@ -204,6 +204,11 @@ Eva - The tank.</value>
   <data name="EnglishMission" xml:space="preserve">
     <value>Mission</value>
   </data>
+  <data name="EnglishRadioFrequencies" xml:space="preserve">
+    <value>Frequency 51.00 MHz - Company Net
+Frequency 31.00 MHz - 1 Platoon Sub-Net
+Frequency 54.00 MHz - 2 Platoon Sub-Net</value>
+  </data>
   <data name="EnglishSignals" xml:space="preserve">
     <value>Signals</value>
   </data>
@@ -243,6 +248,21 @@ Eva - The tank.</value>
   <data name="GermanMission" xml:space="preserve">
     <value>Auftrag</value>
   </data>
+  <data name="GermanProwords" xml:space="preserve">
+    <value>(Examples are in German, as that is the way the prowords are described in our radio manual.)
+
+Ende - Out, reply not required
+
+Kommen - Over, reply to me
+
+Actual - Used for the commander of a unit.
+Example: '1 Actual' is the Zugführer of 1. Zug, not his Funker, who would identify with '1-0'.</value>
+  </data>
+  <data name="GermanRadioFrequencies" xml:space="preserve">
+    <value>Frequency 51.00 MHz - Kompanie Net
+Frequency 31.00 MHz - 1 Zug Sub-Net
+Frequency 54.00 MHz - 2 Zug Sub-Net</value>
+  </data>
   <data name="GermanSignals" xml:space="preserve">
     <value>Gefechtssignale</value>
   </data>
@@ -276,19 +296,6 @@ Spamming Q and E, aka the 'friendly dance' - I'm friendly, don't shoot me</value
   </data>
   <data name="PathNotSetErrorMessage" xml:space="preserve">
     <value>You need to set the path to your mission folder first! Please click the "Select mission folder" button and select the root folder of your mission (the folder with the mission.sqm in it).</value>
-  </data>
-  <data name="Prowords" xml:space="preserve">
-    <value>Ende - Out, reply not required
-
-Kommen - Over, reply to me
-
-Actual - Used for the commander of a unit.
-Example: '1 Actual' is the Zugführer of 1. Zug, not his Funker, who would identify with '1-0'.</value>
-  </data>
-  <data name="RadioFrequencies" xml:space="preserve">
-    <value>Frequency 51.00 MHz - Kompanie Net
-Frequency 31.00 MHz - 1 Zug Sub-Net
-Frequency 54.00 MHz - 2 Zug Sub-Net</value>
   </data>
   <data name="RussianEnemyForces" xml:space="preserve">
     <value>Вражеские Силы</value>

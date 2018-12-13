@@ -219,6 +219,17 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Frequency 51.00 MHz - Company Net
+        ///Frequency 31.00 MHz - 1 Platoon Sub-Net
+        ///Frequency 54.00 MHz - 2 Platoon Sub-Net.
+        /// </summary>
+        internal static string EnglishRadioFrequencies {
+            get {
+                return ResourceManager.GetString("EnglishRadioFrequencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signals.
         /// </summary>
         internal static string EnglishSignals {
@@ -308,6 +319,33 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         internal static string GermanMission {
             get {
                 return ResourceManager.GetString("GermanMission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Examples are in German, as that is the way the prowords are described in our radio manual.)
+        ///
+        ///Ende - Out, reply not required
+        ///
+        ///Kommen - Over, reply to me
+        ///
+        ///Actual - Used for the commander of a unit.
+        ///Example: &apos;1 Actual&apos; is the Zugführer of 1. Zug, not his Funker, who would identify with &apos;1-0&apos;..
+        /// </summary>
+        internal static string GermanProwords {
+            get {
+                return ResourceManager.GetString("GermanProwords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequency 51.00 MHz - Kompanie Net
+        ///Frequency 31.00 MHz - 1 Zug Sub-Net
+        ///Frequency 54.00 MHz - 2 Zug Sub-Net.
+        /// </summary>
+        internal static string GermanRadioFrequencies {
+            get {
+                return ResourceManager.GetString("GermanRadioFrequencies", resourceCulture);
             }
         }
         
@@ -408,31 +446,6 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         internal static string PathNotSetErrorMessage {
             get {
                 return ResourceManager.GetString("PathNotSetErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ende - Out, reply not required
-        ///
-        ///Kommen - Over, reply to me
-        ///
-        ///Actual - Used for the commander of a unit.
-        ///Example: &apos;1 Actual&apos; is the Zugführer of 1. Zug, not his Funker, who would identify with &apos;1-0&apos;..
-        /// </summary>
-        internal static string Prowords {
-            get {
-                return ResourceManager.GetString("Prowords", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frequency 51.00 MHz - Kompanie Net
-        ///Frequency 31.00 MHz - 1 Zug Sub-Net
-        ///Frequency 54.00 MHz - 2 Zug Sub-Net.
-        /// </summary>
-        internal static string RadioFrequencies {
-            get {
-                return ResourceManager.GetString("RadioFrequencies", resourceCulture);
             }
         }
         

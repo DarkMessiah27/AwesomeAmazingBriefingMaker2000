@@ -72,9 +72,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     new Section(name: "5. Friendly Air Presence:", fontColour: "#70db70", size: 14)
                 }),
                 new Tab(string.Format("IV. {0} (Signals):", GetHeaderResource("Signals")), new List<Section> {
-                    new Section(name: "A. Call Signs:", fontColour: "#FF8C00", size: 16, text: Properties.Resources.GermanCallSigns.Split('\n').ToList()),
-                    new Section(name: "B. Prowords:", fontColour: "#FF8C00", size: 16, text: Properties.Resources.Prowords.Split('\n').ToList()),
-                    new Section(name: "C. Radio Frequencies:", fontColour: "#FF8C00", size: 16, text: Properties.Resources.RadioFrequencies.Split('\n').ToList()),
+                    new Section(name: "A. Call Signs:", fontColour: "#FF8C00", size: 16),
+                    new Section(name: "B. Prowords:", fontColour: "#FF8C00", size: 16, text: Properties.Resources.GermanProwords.Split('\n').ToList()),
+                    new Section(name: "C. Radio Frequencies:", fontColour: "#FF8C00", size: 16),
                     new Section(name: "D. Special Signals", fontColour: "#FF8C00", size: 16),
                     new Section(name: "1. Hand Signals:", fontColour: "#70db70", size: 14, text: Properties.Resources.HandSignals.Split('\n').ToList()),
                     new Section(name: "2. Smoke Signals:", fontColour: "#70db70", size: 14, text: Properties.Resources.SmokeSignals.Split('\n').ToList())
