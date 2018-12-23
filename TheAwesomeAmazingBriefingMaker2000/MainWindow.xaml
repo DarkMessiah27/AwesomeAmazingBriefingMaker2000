@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheAwesomeAmazingBriefingMaker2000"
         mc:Ignorable="d"
-        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.2)" Height="1023.832" Width="1026.5">
+        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.4)" Height="1023.832" Width="1026.5">
     <Grid x:Name="mainGrid">
         <Label Content="Welcome to the Awesome Amazing Briefing Maker 2000!" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="36"/>
         <Label Content="Fill in the text boxes on each tab below and hit the &quot;Generate&quot; button." HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="20"/>
@@ -102,8 +102,8 @@
                     <Label Content="Only the Zeus will see this tab." HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
                     <Label Content="You only need to fill this in if you are not going to Zeus the mission yourself!" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'Let the players take the first time fairly easily. Put down a mortar bombardment when they get to the church.'" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'If the players are going too fast, spawn in a counter-attack coming from the city, but don't include more than 2 tanks!'" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'Let the players take the first town fairly easily. Put down a mortar bombardment when they get to the church.'" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'If the players are going too fast, spawn in a counter-attack coming from the city, but don't include more than two tanks!'" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbZeusNotes" Margin="10,150,469,0" Height="249" VerticalAlignment="Top" />
                 </Grid>
             </TabItem>
@@ -134,8 +134,8 @@
                     <Label Content="Timings:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Timing for phases during the mission, can also be timing for expected enemy contact in defensive missions." HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'0600hrs - 1. Kompanie (Pz.Pi.) will move from Oetzendorf to releave 5. Kompanie at the bridge.'" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top"/>
-                    <Label Content="'0700hrs - 1. Kompanie (Pz.Pi) will take up station at Klein Bunstorf.'" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'0600hrs - 1. Kompanie will move from Oetzendorf to releave 5. Kompanie at the bridge.'" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top"/>
+                    <Label Content="'0700hrs - 1. Kompanie will take up station at Klein Bunstorf.'" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbTimings" Height="140" Margin="10,306,522,0" VerticalAlignment="Top"/>
 
                     <Label Content="Control Measures:" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -160,13 +160,13 @@
                     <TextBox x:Name="tbTerrain" Height="22" Margin="10,95,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
                     <Label Content="Weather:" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Describe and weather conditions. Light/heavy fog, rain, clear skies, etc." HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Describe the weather conditions. Light/heavy fog, rain, clear skies, etc." HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
                     <Label Content="'The weather is dry and sunny and is not forecast to change.'" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbWeather" Height="22" Margin="10,199,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
                     <Label Content="Civilian Presence:" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Are there civilians in the area? Where? Are they friendly to us?." HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Are there civilians in the area? Where? Are they friendly to us?" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top"/>
                     <Label Content="Examples:" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top"/>
                     <Label Content="'There are no civilians in the area.' | 'We are uncertain if there are still civilians in the city' | 'There are civilians in the church.'" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbCivilians" Height="22" Margin="10,304,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -187,7 +187,7 @@
                         <Label Content="'British Second Army'" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="tbNameEnemyForces" Height="70" Margin="10,65,522,0" VerticalAlignment="Top"/>
                         <Label Content="Composition:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                        <Label Content="Describe and weather conditions. Light/heavy fog, rain, clear skies, etc." HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
+                        <Label Content="List the strength and equipment that the enemy will most likely use." HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top"/>
                         <Label Content="'Exact enemy strength unknown. Expect British infantry, supported by American Armour.' | '1 Infantry Company armed with small arms, 1 Machine Gun platoon, 1 Tank Platoon.'" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="tbEnemyComposition" Height="22" Margin="10,218,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -212,7 +212,7 @@
                         <TextBox x:Name="tbDefensiveFires" Height="22" Margin="10,547,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
                         <Label Content="Enemy Air Presence:" HorizontalAlignment="Left" Margin="10,569,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                        <Label Content="Any enemy planes operating in the area. If there aren't any, put 'None'." HorizontalAlignment="Left" Margin="10,587,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Any enemy planes operating in the area, otherwise put 'Unknown' or 'None'." HorizontalAlignment="Left" Margin="10,587,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,608,0,0" VerticalAlignment="Top"/>
                         <Label Content="'Unknown, but the enemy has complete air dominance.'" HorizontalAlignment="Left" Margin="10,626,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="tbEnemyAirPresence" Height="22" Margin="10,652,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -220,7 +220,7 @@
                         <Label Content="Future intentions:" HorizontalAlignment="Left" Margin="10,675,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="What are the goals of the enemy?" HorizontalAlignment="Left" Margin="10,693,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,714,0,0" VerticalAlignment="Top"/>
-                        <Label Content="'The Allies will want to cross the canal as quickly and painlessly as possible. If one sector puts up to much resistance, they'll try somewhere else.'" HorizontalAlignment="Left" Margin="10,732,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'The Allies will want to cross the canal as quickly and painlessly as possible. If one sector puts up too much resistance, they'll try somewhere else.'" HorizontalAlignment="Left" Margin="10,732,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="tbFutureIntentions" Height="22" Margin="10,758,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
                     </Grid>
@@ -267,7 +267,7 @@
                         <TextBox x:Name="tbSupportingFires" Height="70" Margin="10,236,33,0" VerticalAlignment="Top" Grid.Column="1"/>
 
                         <Label Content="Friendly Air Presence:" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="122" Grid.Column="1"/>
-                        <Label Content="Any friendly planes operating in the area. If there aren't any, put 'None'." HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top" Height="16" Width="378" Grid.Column="1"/>
+                        <Label Content="Any friendly planes operating in the area. If there aren't any, put 'Unknown' or 'None'." HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top" Height="16" Width="453" Grid.Column="1"/>
                         <Label Content="See the default value for an example." HorizontalAlignment="Left" Margin="10,363,0,0" VerticalAlignment="Top" Height="16" Width="195" Grid.Column="1"/>
                         <TextBox x:Name="tbFriendlyAirPresence" Height="70" Margin="10,404,33,0" VerticalAlignment="Top" Grid.Column="1"/>
 
@@ -278,7 +278,7 @@
                 <Grid Background="#FFE5E5E5">
                     <Label Content="All elements on this tab are optional." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
                     <Label Content="Most of the elements of the Signals tab are always the same and cannot be changed." HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
-                    <Label Content="These elements will be present in the generated briefing but do not appear on this tab." HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
+                    <Label Content="These standard elements will be present in the generated briefing but do not appear on this tab." HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
 
                     <Label Content="Codewords:" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
