@@ -162,6 +162,18 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to These are used to call the mission endings that the mission maker has set up.
+        ///
+        ///Please be careful as a single click will end the mission immediately.
+        ///.
+        /// </summary>
+        internal static string EndingMessagesText {
+            get {
+                return ResourceManager.GetString("EndingMessagesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HQ - Company HQ
         ///
         ///1-0: 1 Platoon HQ

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TheAwesomeAmazingBriefingMaker2000"
         mc:Ignorable="d"
         Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.2)" Height="1023.832" Width="1026.5">
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Label Content="Welcome to the Awesome Amazing Briefing Maker 2000!" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="36"/>
         <Label Content="Fill in the text boxes on each tab below and hit the &quot;Generate&quot; button." HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="20"/>
 

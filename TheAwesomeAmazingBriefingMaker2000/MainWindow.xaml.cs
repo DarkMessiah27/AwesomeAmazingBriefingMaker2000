@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
+using System.Windows.Media;
 
 namespace TheAwesomeAmazingBriefingMaker2000
 {
@@ -19,77 +20,90 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
         public MainWindow()
         {
+            // Set the applicaton's culture info settings to British English, used for the spell check.
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en-GB");
             LanguageProperty.OverrideMetadata(typeof(FrameworkElement), 
                 new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name)));
 
+            // New briefing object is created with the country set to Germany by default. This can be changed by the user in the UI later.
             briefing = new Briefing(Country.Germany);
             fw = new FileWriter();
 
             InitializeComponent();
         }
-
-        private bool HasNotSetMissionPath()
-        {
-            if (fw.HasPaths)
-                return false;
-            else
-                return true;
-        }
-
+        
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
+            // Check if the user has set the path to the mission folder before attempting to generate the briefing.
             if (HasNotSetMissionPath())
             {
                 MessageBox.Show(Properties.Resources.PathNotSetErrorMessage, "Error!");
                 return;
             }
 
+            // Change the briefing's country if necessary.
             if (rbGermany.IsChecked == true)
                 briefing.Country = Country.Germany;
             else if (rbOther.IsChecked == true)
                 briefing.Country = Country.Other;
 
             #region Text extraction
-            // Mission Notes
+
+            // The app will go over each tab in the UI, finding and editing the appropriate Tab and Section objects of the 
+            // briefing object. Most of these Tabs and Sections were setup in advance when the briefing object was created.
+
+            #region Mission Notes
             briefing.Tabs.Find(t => t.Name.Contains("Mission Notes"))
                 .Sections.Find(s => s.Name == "Victory Conditions:").Text = GetTextFromTextBox(tbVictoryConditions);
             briefing.Tabs.Find(t => t.Name.Contains("Mission Notes"))
                 .Sections.Find(s => s.Name == "Defeat Conditions:").Text = GetTextFromTextBox(tbDefeatConditions);
-            
-            // Admin Tab
-            Section endingMessagesSection = new Section(name: "Mission Ending:", fontColour: "#70db70", size: 14, text: new List<string> {
-                        "These are used to call the mission endings that the mission maker has set up.",
-                        "",
-                        "Please be careful as a single click will end the mission immediately.",
-                        ""
-                    });
-            Dictionary<int, List<string>> endingMessages = new Dictionary<int, List<string>>();
+            #endregion
 
+            #region Admin Tab
+            // Set up the default text at the top of the admin tab first.
+            Section endingMessagesSection = new Section(name: "Mission Ending:", fontColour: "#70db70", size: 14, text:
+                Properties.Resources.EndingMessagesText.Split('\n').ToList());
+
+            Dictionary<int, List<string>> endingMessages = new Dictionary<int, List<string>>();
             int messageCounter = 1;
+            // Cycle through each of the text boxes on the admin tab.
             foreach (TextBox tb in grAdminTab.Children.OfType<TextBox>())
             {
+                // Ignore empty text boxes.
                 if (string.IsNullOrWhiteSpace(tb.Text) == false)
                 {
+                    // Use the text boxes labeled as button as the starting point.
                     if (tb.Name.Contains("Button"))
                     {
+                        // Determine the victory type of the text box.
                         string endingType = tb.Name.Contains("Victory") ? "Victory" : "Defeat";
+                        // Get the number of the text box.
                         string endingNumber = tb.Name.Substring(tb.Name.Length - 1);
 
+                        // Extract the text that will become the button label in the in-game briefing.
                         string buttonText = tb.Text;
+
+                        // Extract the text that will become the message shown after the in-game ending is called.
                         List<string> message = GetTextFromTextBox(grAdminTab.Children.OfType<TextBox>()
                             .Single(ch => ch.Name == "tb" + endingType + "Message" + endingNumber));
                         message.Add(endingType);
 
+                        // Store the text of the button and the end screen in the dictionary, using the correct sqf format.
                         endingMessagesSection.Text.Add(string.Format(
                             "<execute expression=\'{0}Message{1} call FNC_EndMissionRequest\'>{2}</execute>", 
                             endingType, messageCounter, buttonText));
                         endingMessages.Add(messageCounter, message);
+
+                        // Increment the message counter used to give each ending condition a unique number.
+                        // (Will be used later to make sure the variable names of the ending conditions match in
+                        // both the endingConditions.sqf and the briefing.sqf.
                         messageCounter++;
                     }
                 }
             }
 
+            // Check if the user filled in a valid number of ending conditions.
+            // If not, show an error message and end generation.
             if (DoesNotHaveEndingConditions(endingMessages))
             {
                 MessageBox.Show(Properties.Resources.EndingConditionsNotSetError, "Error!");
@@ -98,21 +112,31 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
             try
             {
+                // Try to override the second section of the admin tab with the ending messages.
+                // This will be the case if the user is generating more than once.
                 briefing.Tabs.Find(t => t.Name.Contains("Admin Tab")).Sections[1] = endingMessagesSection;
             }
             catch (ArgumentOutOfRangeException)
             {
+                // If it is the first time the user has hit the Generate button, the second section will not yet exist so it must be created.
                 briefing.Tabs.Find(t => t.Name.Contains("Admin Tab")).Sections.Add(endingMessagesSection);
             }
-            briefing.EndingMessages = endingMessages;
 
+            // Store the ending messages in the briefing.
+            // This is used later on for the endingConditions.sqf
+            briefing.EndingMessages = endingMessages;
+            #endregion
+
+            #region Zeus Notes and Situation
             // Zeus Notes
             briefing.Tabs.Find(t => t.Name.Contains("Zeus Notes")).Sections.First().Text = GetTextFromTextBox(tbZeusNotes);
 
             // Situation
             briefing.Tabs.Find(t => t.Name.Contains("Situation")).Sections.First().Text = GetTextFromTextBox(tbSituation);
+            #endregion
 
-            // Mission
+
+            #region Mission
             briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.First()
                 .Text = GetTextFromTextBox(tbMissionStatement);
             briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.Where(s => s.Name != null).ToList()
@@ -123,8 +147,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 .Find(s => s.Name.First() == '2').Text = GetTextFromTextBox(tbControlMeasures);
             briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == '3').Text = GetTextFromTextBox(tbRulesOfEngagement);
+            #endregion
 
-            // Intelligence
+            #region Intelligence
             briefing.Tabs.Find(t => t.Name.Contains("Intelligence")).Sections.Find(s => s.Name.First() == '1')
                 .Text = GetTextFromTextBox(tbTerrain);
             briefing.Tabs.Find(t => t.Name.Contains("Intelligence")).Sections.Find(s => s.Name.First() == '2')
@@ -133,8 +158,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 .Text = GetTextFromTextBox(tbCivilians);
             briefing.Tabs.Find(t => t.Name.Contains("Intelligence")).Sections.Find(s => s.Name.First() == '4')
                 .Text = GetTextFromTextBox(tbPertinentInformation);
+            #endregion
 
-            // Enemy Forces
+            #region Enemy Forces
             briefing.Tabs.Find(t => t.Name.Contains("Enemy Forces")).Sections.First()
                 .Text = GetTextFromTextBox(tbNameEnemyForces);
             briefing.Tabs.Find(t => t.Name.Contains("Enemy Forces")).Sections.Where(s => s.Name != null).ToList()
@@ -149,8 +175,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 .Find(s => s.Name.First() == '5').Text = GetTextFromTextBox(tbEnemyAirPresence);
             briefing.Tabs.Find(t => t.Name.Contains("Enemy Forces")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == '6').Text = GetTextFromTextBox(tbFutureIntentions);
+            #endregion
 
-            // Friendly Forces
+            #region Friendly Forces
             briefing.Tabs.Find(t => t.Name.Contains("Friendly Forces")).Sections.First()
                 .Text = GetTextFromTextBox(tbNameFriendlyForces);
             briefing.Tabs.Find(t => t.Name.Contains("Friendly Forces")).Sections.Where(s => s.Name != null).ToList()
@@ -163,33 +190,25 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 .Find(s => s.Name.First() == '4').Text = GetTextFromTextBox(tbSupportingFires);
             briefing.Tabs.Find(t => t.Name.Contains("Friendly Forces")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == '5').Text = GetTextFromTextBox(tbFriendlyAirPresence);
+            #endregion
 
-            // Signals
+            #region Signals
             List<string> codeWords = GetTextFromTextBox(tbCodewords);
             List<string> passwords = GetTextFromTextBox(tbPasswords);
 
-            bool hasCodeWords = false;
-            foreach (string cd in codeWords)
-            {
-                if (string.IsNullOrWhiteSpace(cd) == false)
-                    hasCodeWords = true;
-            }
+            // Check for both the code words and passwords, if there were any actual entries in the text boxes.
+            bool hasCodeWords = ListIsJustWhiteSpace(codeWords);
+            bool hasPasswords = ListIsJustWhiteSpace(passwords);
 
-            bool hasPasswords = false;
-            foreach (string pw in passwords)
-            {
-                if (string.IsNullOrWhiteSpace(pw) == false)
-                    hasPasswords = true;
-            }
-
+            // The Codewords section is optional and will only be created if the user filled anything in.
             if (hasCodeWords)
             {
+                // Check if a codewords section already exists.
+                // (This would be the case if the user clicks generate more than once)
+                // If it does, override it; if not, create it.
                 Section codeWordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "3. Codewords:");
                 if (codeWordsSection == null)
                 {
-                    //briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Add(
-                    //    new Section(name: "3. Codewords:", fontColour: "#70db70", size: 14, text: codeWords));
-
                     briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Insert(6,
                         new Section(name: "3. Codewords:", fontColour: "#70db70", size: 14, text: codeWords));
                 }
@@ -200,14 +219,20 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
             else
             {
+                // If a code words section exists, it means the user already generated the briefing at least once.
+                // However, if the text box was now left empty, it needs to be removed.
                 Section codeWordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "3. Codewords:");
 
                 if (codeWordsSection != null)
                     briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Remove(codeWordsSection);
             }
 
+            // The Passwords section is optional and will only be created if the user filled anything in.
             if (hasPasswords)
             {
+                // Check if a passwords section already exists.
+                // (This would be the case if the user clicks generate more than once)
+                // If it does, override it; if not, create it.
                 Section passwordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "4. Passwords:");
                 if (passwordsSection == null)
                 {
@@ -221,13 +246,16 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
             else
             {
+                // If a password section exists, it means the user already generated the briefing at least once.
+                // However, if the text box was now left empty, it needs to be removed.
                 Section passwordsSection = briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Find(s => s.Name == "4. Passwords:");
 
                 if (passwordsSection != null)
                     briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Remove(passwordsSection);
             }
+            #endregion
 
-            // Assign localised text to Signal tab where necessary
+            // Assign localised text to Signal tab where necessary.
             switch (briefing.Country)
             {
                 case Country.Germany:
@@ -237,15 +265,17 @@ namespace TheAwesomeAmazingBriefingMaker2000
                         .Sections.Find(s => s.Name == "C. Radio Frequencies:").Text = Properties.Resources.GermanRadioFrequencies.Split('\n').ToList();
                     break;
                 case Country.Japan:
+                    // Not yet supported, will drop through to default.
                 case Country.Russia:
+                    // Not yet supported, will drop through to default.
                 default:
+                    // Default language is English.
                     briefing.Tabs.Find(t => t.Name.Contains("Signals"))
                         .Sections.Find(s => s.Name == "A. Call Signs:").Text = Properties.Resources.EnglishCallSigns.Split('\n').ToList();
                     briefing.Tabs.Find(t => t.Name.Contains("Signals"))
                         .Sections.Find(s => s.Name == "C. Radio Frequencies:").Text = Properties.Resources.EnglishRadioFrequencies.Split('\n').ToList();
                     break;
             }
-
             #endregion
 
             try
@@ -255,12 +285,39 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
             catch (IOException)
             {
+                // An IO exception might occur if the application wasn't able to open, find, or edit the files.
                 MessageBox.Show(Properties.Resources.IOErrorMessage, "Error!");
             }
             catch (Exception ex)
             {
+                // If a different exception occurs that was not forseen, create an error log and show an error message.
                 fw.CreateErrorLog(ex);
                 MessageBox.Show(Properties.Resources.GenericErrorMessage, "Error!");
+            }
+
+            //List<TextBox> textBoxes = new List<TextBox>();
+            //List<RadioButton> radioButtons = new List<RadioButton>();
+
+            //GetChildControl(this, ref textBoxes, ref radioButtons);
+            
+            //fw.SaveMainWindowContents(textBoxes, radioButtons);
+        }
+
+
+        private void GetChildControl(Visual visual, ref List<TextBox> textBoxes, ref List<RadioButton> radioButtons)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(visual); i++)
+            {
+                var lc = LogicalChildren;
+                
+                Visual childVisual = (Visual)VisualTreeHelper.GetChild(visual, i);
+
+                if (childVisual is TextBox)
+                    textBoxes.Add((TextBox)childVisual);
+                else if (childVisual is RadioButton)
+                    radioButtons.Add((RadioButton)childVisual);
+
+                GetChildControl(childVisual, ref textBoxes, ref radioButtons);
             }
         }
 
@@ -398,18 +455,54 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
         }
 
+        /// <summary>
+        /// Checks if the user has filled in at least one victory and at least one defeat condition.
+        /// </summary>
+        /// <param name="endingMessages">All the ending conditions extracted from the text boxes on the admin tab.</param>
+        /// <returns></returns>
         private bool DoesNotHaveEndingConditions(Dictionary<int, List<string>> endingMessages)
         {
+            // Having less than two ending conditions means either the victory or the defeat condition is missing.
             if (endingMessages.Count < 2)
                 return true;
 
+            // Count the number of victory and defeat conditions.
             int nrOfVictoryConditions = endingMessages.Values.Where(message => message.Last() == "Victory").Count();
             int nrOfDefeatConditions = endingMessages.Values.Where(message => message.Last() == "Defeat").Count();
 
+            // Return true if either of them is 0.
             if (nrOfVictoryConditions == 0 || nrOfDefeatConditions == 0)
                 return true;
-
+            
             return false;
+        }
+
+        /// <summary>
+        /// Checks if the filewrites already has paths to the relevant sqf files.
+        /// </summary>
+        /// <returns></returns>
+        private bool HasNotSetMissionPath()
+        {
+            if (fw.HasPaths)
+                return false;
+            else
+                return true;
+        }
+
+        /// <summary>
+        /// Checks if a list only contains empty or whitespace strings.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private bool ListIsJustWhiteSpace(List<string> list)
+        {
+            foreach (string s in list)
+            {
+                if (string.IsNullOrWhiteSpace(s) == false)
+                    return false;
+            }
+
+            return true;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TheAwesomeAmazingBriefingMaker2000
@@ -15,6 +16,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
             SetupTabs();
         }
 
+        /// <summary>
+        /// Sets up the default tabs of the briefing.
+        /// </summary>
         private void SetupTabs()
         {
             Tabs = new List<Tab>
@@ -81,7 +85,12 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 })
             };
         }
-
+        
+        /// <summary>
+        /// Gets the localised (based on the Country property) string resource for a specified tab header.
+        /// </summary>
+        /// <param name="headerName"></param>
+        /// <returns></returns>
         private string GetHeaderResource(string headerName)
         {
             switch (Country)
@@ -123,6 +132,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
                             return "";
                     }
                 case Country.Japan:
+                    // Not yet supported. Falls through to default case.
                 default:
                     switch (headerName)
                     {
@@ -147,7 +157,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
     enum Country
     {
-        Other,
+        Other, // English language used.
         Germany,
         Russia,
         Japan

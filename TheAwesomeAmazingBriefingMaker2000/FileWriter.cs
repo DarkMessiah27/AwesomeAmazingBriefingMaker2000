@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace TheAwesomeAmazingBriefingMaker2000
 {
@@ -10,6 +12,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
     {
         private string briefingFilePath;
         private string endConditionsFilePath;
+        private readonly string previousBriefingsPath = Directory.GetCurrentDirectory() + "\\Saved Briefings\\";
 
         public bool HasPaths { get; set; }
         
@@ -18,6 +21,10 @@ namespace TheAwesomeAmazingBriefingMaker2000
             HasPaths = false;
         }
 
+        /// <summary>
+        /// Prompts the user to select the mission's folder, from which the paths to the
+        /// briefing.sqf and endConditions.sqf are derived.
+        /// </summary>
         public void SetPaths()
         {
             var dlg = new VistaFolderBrowserDialog
@@ -37,6 +44,26 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
         }
 
+        //public void SaveMainWindowContents(List<TextBox> textBoxes, List<RadioButton> radioButtons)
+        //{
+        //    string fileName = previousBriefingsPath + Utilities.CreateDatetimeSeed() + ".txt";
+        //    Directory.CreateDirectory(previousBriefingsPath);
+        //    var file = File.Create(fileName);
+        //    file.Close();
+
+        //    using (TextWriter tw = new StreamWriter(fileName))
+        //    {
+        //        foreach (var rb in radioButtons)
+        //            tw.WriteLine(string.Format("{0}|{1}", rb.Name, rb.IsChecked));
+        //        foreach (var tb in textBoxes)
+        //            tw.WriteLine(string.Format("{0}|{1}", tb.Name, tb.Text));
+        //    }
+        //}
+
+        /// <summary>
+        /// Generates a briefing.sqf file from scratch, and edits an existing endConditions.sqf file.
+        /// </summary>
+        /// <param name="briefing"></param>
         public void GenerateBriefing(Briefing briefing)
         {
             if (File.Exists(briefingFilePath) == false)
@@ -61,6 +88,11 @@ namespace TheAwesomeAmazingBriefingMaker2000
             EditEndConditions(briefing.EndingMessages);
         }
 
+        /// <summary>
+        /// Writes the contents of one Tab object into the briefing.sqf file.
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <param name="tw"></param>
         private void WriteTab(Tab tab, TextWriter tw)
         {
             if (tab.Name == "Admin Tab")
@@ -101,6 +133,11 @@ namespace TheAwesomeAmazingBriefingMaker2000
             tw.WriteLine("ENDTAB;");
         }
 
+        /// <summary>
+        /// Writes the content of one Section object into the briefing.sqf file.
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="tw"></param>
         private void WriteSection(Section section, TextWriter tw)
         {
             if (string.IsNullOrWhiteSpace(section.Name) == false)
@@ -118,10 +155,18 @@ namespace TheAwesomeAmazingBriefingMaker2000
             tw.WriteLine("<br/>");
         }
 
+        /// <summary>
+        /// Edits the endConditions.sqf file.
+        /// </summary>
+        /// <param name="messages"></param>
         private void EditEndConditions(Dictionary<int, List<string>> messages)
         {
+            // Read all the lines of an existing endConditions.sqf file.
             List<string> lines = File.ReadAllLines(endConditionsFilePath).ToList();
 
+            // We need to find the line indicating the start of the end messages section of the file.
+            // Once we've found it, we need to start counting all the lines that come after. 
+            // These lines are (as of the time of writing) either empty or commented out code that is no longer used.
             int startOfEndMessages = 0;
             int removalCounter = 0;
             for (int i = 0; i < lines.Count; i++)
@@ -133,8 +178,10 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     removalCounter++;
             }
 
+            // Remove the above-mentioned unneccesary lines.
             lines.RemoveRange(startOfEndMessages, removalCounter - 1);
 
+            // Add each ending message.
             foreach (var message in messages)
             {
                 string victoryType = message.Value.Last();
@@ -152,14 +199,20 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 lines.Add(string.Format("publicVariable \"{0}Message{1}\";", victoryType, message.Key));
             }
 
+            // Add the sleep command back onto the end of the list (since it was removed in a previous step).
             lines.Add("sleep (10);");
             
+            // Write the list to the file, overwriting its contents.
             File.WriteAllLines(endConditionsFilePath, lines);
         }
 
+        /// <summary>
+        /// In case of an unexpected error, create an error log with the exception and its stack trace.
+        /// </summary>
+        /// <param name="ex"></param>
         public void CreateErrorLog(Exception ex)
         {
-            string path = Directory.GetCurrentDirectory() + "\\errorLog.txt";
+            string path = Directory.GetCurrentDirectory() + "\\errorLog" + Utilities.CreateDatetimeSeed() + ".txt";
 
             using (TextWriter tw = new StreamWriter(path))
             {
