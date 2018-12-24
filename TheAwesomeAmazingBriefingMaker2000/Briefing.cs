@@ -6,6 +6,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
 {
     class Briefing
     {
+
+        private readonly string[] headersWithLocalisation;
+
         public List<Tab> Tabs { get; set; }
         public Dictionary<int, List<string>> EndingMessages { get; set; }
         public Country Country { get; set; }
@@ -13,6 +16,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
         public Briefing(Country country)
         {
             Country = country;
+            headersWithLocalisation = new string[] { "Situation", "Mission", "Intelligence", "Enemy Forces", "Friendly Forces", "Signals" };
             SetupTabs();
         }
 
@@ -40,10 +44,10 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 new Tab("Zeus Notes", new List<Section>{
                     new Section(name: "If you are not going to Zeus this mission, do not read this tab.", fontColour: "#FF8C00", size: 20)
                 }, false),
-                new Tab(string.Format("I. {0} (Situation):", GetHeaderResource("Situation")), new List<Section>{
+                new Tab(GetLocalisedHeaderName("Situation"), new List<Section>{
                     new Section()
                 }),
-                new Tab(string.Format("II. {0} (Mission):", GetHeaderResource("Mission")), new List<Section>{
+                new Tab(GetLocalisedHeaderName("Mission"), new List<Section>{
                     new Section(),
                     new Section(name: "A. Concept of the Operation", fontColour: "#FF8C00", size: 16),
                     new Section(name: "B. Coordinating Instructions", fontColour: "#FF8C00", size: 16),
@@ -51,14 +55,14 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     new Section(name: "2. Control Measures:", fontColour: "#70db70", size: 14),
                     new Section(name: "3. Rules of Engagement:", fontColour: "#70db70", size: 14)
                 }),
-                new Tab(string.Format("III. {0} (Intelligence):", GetHeaderResource("Intelligence")), new List<Section>{
+                new Tab(GetLocalisedHeaderName("Intelligence"), new List<Section>{
                     new Section(name: "A. Overview", fontColour: "#FF8C00", size: 16),
                     new Section(name: "1. Terrain:", fontColour: "#70db70", size: 14),
                     new Section(name: "2. Weather:", fontColour: "#70db70", size: 14),
                     new Section(name: "3. Civilian Presence:", fontColour: "#70db70", size: 14),
                     new Section(name: "4. Pertinent Information:", fontColour: "#70db70", size: 14)
                 }),
-                new Tab(string.Format("III. B. {0} (Enemy Forces):", GetHeaderResource("Enemy Forces")), new List<Section>{
+                new Tab(GetLocalisedHeaderName("Enemy Forces"), new List<Section>{
                     new Section(),
                     new Section(name: "1. Composition:", fontColour: "#70db70", size: 14),
                     new Section(name: "2. Location:", fontColour: "#70db70", size: 14),
@@ -67,7 +71,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     new Section(name: "5. Enemy Air Presence:", fontColour: "#70db70", size: 14),
                     new Section(name: "6. Future intentions:", fontColour: "#70db70", size: 14)
                 }),
-                new Tab(string.Format("III. B. {0} (Friendly Forces):", GetHeaderResource("Friendly Forces")), new List<Section>{
+                new Tab(GetLocalisedHeaderName("Friendly Forces"), new List<Section>{
                     new Section(),
                     new Section(name: "1. Composition:", fontColour: "#70db70", size: 14),
                     new Section(name: "2. Attachments/Detachments:", fontColour: "#70db70", size: 14),
@@ -75,7 +79,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     new Section(name: "4. Supporting fires:", fontColour: "#70db70", size: 14),
                     new Section(name: "5. Friendly Air Presence:", fontColour: "#70db70", size: 14)
                 }),
-                new Tab(string.Format("IV. {0} (Signals):", GetHeaderResource("Signals")), new List<Section> {
+                new Tab(GetLocalisedHeaderName("Signals"), new List<Section> {
                     new Section(name: "A. Call Signs:", fontColour: "#FF8C00", size: 16),
                     new Section(name: "B. Prowords:", fontColour: "#FF8C00", size: 16, text: Properties.Resources.GermanProwords.Split('\n').ToList()),
                     new Section(name: "C. Radio Frequencies:", fontColour: "#FF8C00", size: 16),
@@ -87,11 +91,11 @@ namespace TheAwesomeAmazingBriefingMaker2000
         }
         
         /// <summary>
-        /// Gets the localised (based on the Country property) string resource for a specified tab header.
+        /// Gets the localised header name, using the Country property to get the appropriate localised version.
         /// </summary>
         /// <param name="headerName"></param>
         /// <returns></returns>
-        private string GetHeaderResource(string headerName)
+        private string GetLocalisedHeaderName(string headerName)
         {
             switch (Country)
             {
@@ -99,17 +103,17 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     switch (headerName)
                     {
                         case "Situation":
-                            return Properties.Resources.GermanSituation;
+                            return string.Format("I. {0} (Situation):", Properties.Resources.GermanSituation);
                         case "Mission":
-                            return Properties.Resources.GermanMission;
+                            return string.Format("II. {0} (Mission):", Properties.Resources.GermanMission);
                         case "Intelligence":
-                            return Properties.Resources.GermanIntelligence;
+                            return string.Format("III. {0} (Intelligence):", Properties.Resources.GermanIntelligence);
                         case "Enemy Forces":
-                            return Properties.Resources.GermanEnemyForces;
+                            return string.Format("III. B. {0} (Enemy Forces):", Properties.Resources.GermanEnemyForces);
                         case "Friendly Forces":
-                            return Properties.Resources.GermanFriendlyForces;
+                            return string.Format("III. C. {0} (Friendly Forces):", Properties.Resources.GermanFriendlyForces);
                         case "Signals":
-                            return Properties.Resources.GermanSignals;
+                            return string.Format("IV. {0} (Signals):", Properties.Resources.GermanSignals);
                         default:
                             return "";
                     }
@@ -117,17 +121,17 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     switch (headerName)
                     {
                         case "Situation":
-                            return Properties.Resources.RussianSituation;
+                            return string.Format("I. {0} (Situation):", Properties.Resources.RussianSituation);
                         case "Mission":
-                            return Properties.Resources.RussianMission;
+                            return string.Format("II. {0} (Mission):", Properties.Resources.RussianMission);
                         case "Intelligence":
-                            return Properties.Resources.RussianIntelligence;
+                            return string.Format("III. {0} (Intelligence):", Properties.Resources.RussianIntelligence);
                         case "Enemy Forces":
-                            return Properties.Resources.RussianEnemyForces;
+                            return string.Format("III. B. {0} (Enemy Forces):", Properties.Resources.RussianEnemyForces);
                         case "Friendly Forces":
-                            return Properties.Resources.RussianFriendlyForces;
+                            return string.Format("III. C. {0} (Friendly Forces):", Properties.Resources.RussianFriendlyForces);
                         case "Signals":
-                            return Properties.Resources.RussianSignals;
+                            return string.Format("IV. {0} (Signals):", Properties.Resources.RussianSignals);
                         default:
                             return "";
                     }
@@ -137,20 +141,35 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     switch (headerName)
                     {
                         case "Situation":
-                            return Properties.Resources.EnglishSituation;
+                            return string.Format("I. {0}:", Properties.Resources.EnglishSituation);
                         case "Mission":
-                            return Properties.Resources.EnglishMission;
+                            return string.Format("II. {0}:", Properties.Resources.EnglishMission);
                         case "Intelligence":
-                            return Properties.Resources.EnglishIntelligence;
+                            return string.Format("III. {0}:", Properties.Resources.EnglishIntelligence);
                         case "Enemy Forces":
-                            return Properties.Resources.EnglishEnemyForces;
+                            return string.Format("III. B. {0}:", Properties.Resources.EnglishEnemyForces);
                         case "Friendly Forces":
-                            return Properties.Resources.EnglishFriendlyForces;
+                            return string.Format("III. C. {0}:", Properties.Resources.EnglishFriendlyForces);
                         case "Signals":
-                            return Properties.Resources.EnglishSignals;
+                            return string.Format("IV. {0}:", Properties.Resources.EnglishSignals);
                         default:
                             return "";
                     }
+            }
+        }
+
+        /// <summary>
+        /// Changes the names of header tabs that have a localised version based on the currently selected Country.
+        /// </summary>
+        public void SetLocalisedHeaderNames()
+        {
+            for (int i = 4; i < Tabs.Count; i++)
+            {
+                foreach (string s in headersWithLocalisation)
+                {
+                    if (Tabs[i].Name.Contains(s))
+                        Tabs[i].Name = GetLocalisedHeaderName(s);
+                }
             }
         }
     }

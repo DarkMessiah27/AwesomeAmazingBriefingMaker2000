@@ -15,8 +15,8 @@ namespace TheAwesomeAmazingBriefingMaker2000
     /// </summary>
     public partial class MainWindow : Window
     {
-        Briefing briefing;
-        FileWriter fw;
+        private Briefing briefing;
+        private FileWriter fw;
 
         public MainWindow()
         {
@@ -49,8 +49,12 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
             #region Text extraction
 
+            // ------------------------------------------------------------------------------------------------------------
+            //
             // The app will go over each tab in the UI, finding and editing the appropriate Tab and Section objects of the 
             // briefing object. Most of these Tabs and Sections were setup in advance when the briefing object was created.
+            //
+            // ------------------------------------------------------------------------------------------------------------
 
             #region Mission Notes
             briefing.Tabs.Find(t => t.Name.Contains("Mission Notes"))
@@ -134,18 +138,17 @@ namespace TheAwesomeAmazingBriefingMaker2000
             // Situation
             briefing.Tabs.Find(t => t.Name.Contains("Situation")).Sections.First().Text = GetTextFromTextBox(tbSituation);
             #endregion
-
-
+            
             #region Mission
-            briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.First()
+            briefing.Tabs.Find(t => t.Name.Contains("Mission") && !t.Name.Contains("Notes")).Sections.First()
                 .Text = GetTextFromTextBox(tbMissionStatement);
-            briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.Where(s => s.Name != null).ToList()
+            briefing.Tabs.Find(t => t.Name.Contains("Mission") && !t.Name.Contains("Notes")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == 'A').Text = GetTextFromTextBox(tbConceptOfOperation);
-            briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.Where(s => s.Name != null).ToList()
+            briefing.Tabs.Find(t => t.Name.Contains("Mission") && !t.Name.Contains("Notes")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == '1').Text = GetTextFromTextBox(tbTimings);
-            briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.Where(s => s.Name != null).ToList()
+            briefing.Tabs.Find(t => t.Name.Contains("Mission") && !t.Name.Contains("Notes")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == '2').Text = GetTextFromTextBox(tbControlMeasures);
-            briefing.Tabs.Find(t => t.Name.Contains("(Mission)")).Sections.Where(s => s.Name != null).ToList()
+            briefing.Tabs.Find(t => t.Name.Contains("Mission") && !t.Name.Contains("Notes")).Sections.Where(s => s.Name != null).ToList()
                 .Find(s => s.Name.First() == '3').Text = GetTextFromTextBox(tbRulesOfEngagement);
             #endregion
 
@@ -276,7 +279,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
                         .Sections.Find(s => s.Name == "C. Radio Frequencies:").Text = Properties.Resources.EnglishRadioFrequencies.Split('\n').ToList();
                     break;
             }
-            #endregion
+            #endregion // End of text extraction region.
 
             try
             {
@@ -304,22 +307,22 @@ namespace TheAwesomeAmazingBriefingMaker2000
         }
 
 
-        private void GetChildControl(Visual visual, ref List<TextBox> textBoxes, ref List<RadioButton> radioButtons)
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(visual); i++)
-            {
-                var lc = LogicalChildren;
+        //private void GetChildControl(Visual visual, ref List<TextBox> textBoxes, ref List<RadioButton> radioButtons)
+        //{
+        //    for (int i = 0; i < VisualTreeHelper.GetChildrenCount(visual); i++)
+        //    {
+        //        var lc = LogicalChildren;
                 
-                Visual childVisual = (Visual)VisualTreeHelper.GetChild(visual, i);
+        //        Visual childVisual = (Visual)VisualTreeHelper.GetChild(visual, i);
 
-                if (childVisual is TextBox)
-                    textBoxes.Add((TextBox)childVisual);
-                else if (childVisual is RadioButton)
-                    radioButtons.Add((RadioButton)childVisual);
+        //        if (childVisual is TextBox)
+        //            textBoxes.Add((TextBox)childVisual);
+        //        else if (childVisual is RadioButton)
+        //            radioButtons.Add((RadioButton)childVisual);
 
-                GetChildControl(childVisual, ref textBoxes, ref radioButtons);
-            }
-        }
+        //        GetChildControl(childVisual, ref textBoxes, ref radioButtons);
+        //    }
+        //}
 
         /// <summary>
         /// Extracts the text from a rich text box element.
@@ -341,6 +344,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
         private void RbGermany_Checked(object sender, RoutedEventArgs e)
         {
             briefing.Country = Country.Germany;
+            briefing.SetLocalisedHeaderNames();
 
             foreach (var checkbox in grFriendlyForces.Children.OfType<CheckBox>())
             {
@@ -360,7 +364,8 @@ namespace TheAwesomeAmazingBriefingMaker2000
         private void RbOther_Checked(object sender, RoutedEventArgs e)
         {
             briefing.Country = Country.Other;
-
+            briefing.SetLocalisedHeaderNames();
+            
             foreach (var checkbox in grFriendlyForces.Children.OfType<CheckBox>())
             {
                 if (checkbox.IsChecked == true)

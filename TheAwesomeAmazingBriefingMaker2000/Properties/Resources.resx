@@ -139,7 +139,7 @@ NEWTAB("Admin Tab")
 &lt;br/&gt;If the admin is dead and in spectator they can also trigger a respawn by typing the command &lt;font color='#FF8C00'&gt;#respawnWave&lt;/font&gt; in spectator chat.
 &lt;br/&gt;
 &lt;br/&gt;This must NOT be used in missions that already have respawning enabled.
-&lt;br/&gt;    &lt;execute expression='FW_RespawnTickets = 1; publicVariable ""FW_RespawnTickets""; 10 remoteExec [""setPlayerRespawnTime""]; [] spawn { sleep 30; FW_RespawnTickets = 0; publicVariable ""FW_RespawnTickets""; 10e10 remoteExec [""setPlayerRespawnTime""];};'&gt;Call Respawn Wave&lt;/execute&gt;
+&lt;br/&gt;    &lt;execute expression='FW_RespawnTickets = 1; publicVariable ""FW_RespawnTickets""; {setPlayerRespawnTime random 10;} remoteExec [""call""]; [{FW_RespawnTickets = 0; publicVariable ""FW_RespawnTickets""; 10e10 remoteExec [""setPlayerRespawnTime""]; },[],30] call CBA_fnc_waitAndExecute;'&gt;Call Respawn Wave&lt;/execute&gt;
 &lt;br/&gt;</value>
   </data>
   <data name="ClanName" xml:space="preserve">
