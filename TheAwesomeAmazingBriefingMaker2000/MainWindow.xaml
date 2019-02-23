@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheAwesomeAmazingBriefingMaker2000"
         mc:Ignorable="d"
-        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.6)" Height="1023.832" Width="1026.5">
+        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.8)" Height="1023.832" Width="1026.5">
     <Grid x:Name="mainGrid">
-        <Label Content="Welcome to the Awesome Amazing Briefing Maker 2000!" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <Label Content="Fill in the text boxes on each tab below and hit the &quot;Generate&quot; button." HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="285*"/>
+            <ColumnDefinition Width="733*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Welcome to the Awesome Amazing Briefing Maker 2000!" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="36" Grid.ColumnSpan="2"/>
+        <Label Content="Fill in the text boxes on each tab below and hit the &quot;Generate&quot; button." HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="20" Grid.ColumnSpan="2"/>
 
-        <TabControl Margin="10,110,10,10">
+        <TabControl Margin="10,110,10,10" Grid.ColumnSpan="2">
             <TabItem Header="Mission Notes">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Victory Conditions:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -295,11 +299,11 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="What country will we be playing as?" HorizontalAlignment="Left" Margin="805,53,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <RadioButton x:Name="rbGermany" Content="Germany" HorizontalAlignment="Left" Margin="805,76,0,0" VerticalAlignment="Top" IsChecked="true" Checked="RbGermany_Checked"/>
-        <RadioButton x:Name="rbOther" Content="Other" HorizontalAlignment="Left" Margin="805,96,0,0" VerticalAlignment="Top" Checked="RbOther_Checked"/>
-        <Button x:Name="btnGenerate" Content="Generate!" HorizontalAlignment="Left" Margin="683,53,0,0" VerticalAlignment="Top" 
-                            Width="117" Height="35" FontWeight="Bold" FontSize="22" Padding="0,0,0,0" Click="BtnGenerate_Click"/>
-        <Button x:Name="btnSelectFolder" Content="Select mission folder" HorizontalAlignment="Left" Margin="683,93,0,0" VerticalAlignment="Top" Width="117" Click="BtnSelectFolder_Click"/>
+        <Label Content="What country will we be playing as?" HorizontalAlignment="Left" Margin="520,53,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1"/>
+        <RadioButton x:Name="rbGermany" Content="Germany" HorizontalAlignment="Left" Margin="520,76,0,0" VerticalAlignment="Top" IsChecked="true" Checked="RbGermany_Checked" Grid.Column="1"/>
+        <RadioButton x:Name="rbOther" Content="Other" HorizontalAlignment="Left" Margin="520,96,0,0" VerticalAlignment="Top" Checked="RbOther_Checked" Grid.Column="1"/>
+        <Button x:Name="btnGenerate" Content="Generate!" HorizontalAlignment="Left" Margin="398,53,0,0" VerticalAlignment="Top" 
+                            Width="117" Height="35" FontWeight="Bold" FontSize="22" Padding="0,0,0,0" Click="BtnGenerate_Click" Grid.Column="1"/>
+        <Button x:Name="btnSelectFolder" Content="Select mission folder" HorizontalAlignment="Left" Margin="398,93,0,0" VerticalAlignment="Top" Width="117" Click="BtnSelectFolder_Click" Grid.Column="1"/>
     </Grid>
 </Window>
