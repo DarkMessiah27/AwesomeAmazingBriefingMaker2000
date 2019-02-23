@@ -198,9 +198,6 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 lines.Add("<br/>" + victoryType + "\";");
                 lines.Add(string.Format("publicVariable \"{0}Message{1}\";", victoryType, message.Key));
             }
-
-            // Add the sleep command back onto the end of the list (since it was removed in a previous step).
-            lines.Add("sleep (10);");
             
             // Write the list to the file, overwriting its contents.
             File.WriteAllLines(endConditionsFilePath, lines);
