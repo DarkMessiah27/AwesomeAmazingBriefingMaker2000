@@ -140,6 +140,15 @@ namespace TheAwesomeAmazingBriefingMaker2000
         /// <param name="tw"></param>
         private void WriteSection(Section section, TextWriter tw)
         {
+            // Escape double quotes.
+            if (section.Text.Any(l => l.Contains("\"")))
+            {
+                for (int i = 0; i < section.Text.Count; i++)
+                {
+                    section.Text[i] = section.Text[i].Replace("\"", "\"\"");
+                }
+            }
+            
             if (string.IsNullOrWhiteSpace(section.Name) == false)
             {
                 tw.WriteLine(string.Format("<br/><font color=\'{0}\' size=\'{1}\'>{2}</font>",

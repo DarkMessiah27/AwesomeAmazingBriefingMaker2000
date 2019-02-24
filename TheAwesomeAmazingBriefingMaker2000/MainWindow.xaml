@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheAwesomeAmazingBriefingMaker2000"
         mc:Ignorable="d"
-        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.8)" Height="1023.832" Width="1026.5">
+        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.9)" Height="1023.832" Width="1026.5">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="285*"/>
