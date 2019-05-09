@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace TheAwesomeAmazingBriefingMaker2000
 {
@@ -13,6 +11,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
         private string briefingFilePath;
         private string endConditionsFilePath;
         private readonly string previousBriefingsPath = Directory.GetCurrentDirectory() + "\\Saved Briefings\\";
+
+        // Version number
+        private Version version = null;
 
         public bool HasPaths { get; set; }
         
@@ -74,6 +75,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
             using (TextWriter tw = new StreamWriter(briefingFilePath))
             {
+                tw.WriteLine($"// Created with The Awesome Amazing Briefing Maker 2000 - v{Properties.Resources.VersionNumber}");
                 tw.WriteLine("#include \"core\\briefingCore.sqf\"");
                 
                 foreach (Tab tab in briefing.Tabs)
@@ -207,7 +209,10 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 lines.Add("<br/>" + victoryType + "\";");
                 lines.Add(string.Format("publicVariable \"{0}Message{1}\";", victoryType, message.Key));
             }
-            
+
+            // Add Assembly version to the bottom of the file.
+            lines.Add($"// Created with The Awesome Amazing Briefing Maker 2000 - v{Properties.Resources.VersionNumber}");
+
             // Write the list to the file, overwriting its contents.
             File.WriteAllLines(endConditionsFilePath, lines);
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheAwesomeAmazingBriefingMaker2000"
         mc:Ignorable="d"
-        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.9)" Height="1023.832" Width="1026.5">
+        Title="The Awesome Amazing Briefing Maker 2000 (1.0.0.10)" Height="1023.832" Width="1147.5">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="285*"/>
@@ -186,46 +186,50 @@
             <TabItem Header="Enemy Forces">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="661*"/>
+                            <ColumnDefinition Width="453*"/>
+                        </Grid.ColumnDefinitions>
                         <Label Content="Name of the enemy forces:" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
                         <Label Content="'British Second Army'" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbNameEnemyForces" Height="70" Margin="10,65,522,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbNameEnemyForces" Height="70" Margin="10,65,69,0" VerticalAlignment="Top"/>
                         <Label Content="Composition:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="List the strength and equipment that the enemy will most likely use." HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top"/>
-                        <Label Content="'Exact enemy strength unknown. Expect British infantry, supported by American Armour.' | '1 Infantry Company armed with small arms, 1 Machine Gun platoon, 1 Tank Platoon.'" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbEnemyComposition" Height="22" Margin="10,218,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="'Exact enemy strength unknown. Expect British infantry, supported by American Armour.' | '1 Infantry Company armed with small arms, 1 Machine Gun platoon, 1 Tank Platoon.'" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tbEnemyComposition" Height="22" Margin="10,218,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                         <Label Content="Location:" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Known location of enemies." HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top"/>
                         <Label Content="'Approaching from the west towards the Rosche Canal on foot.'" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbLocation" Height="22" Margin="10,323,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbLocation" Height="22" Margin="10,323,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                         <Label Content="Possible Enemy Actions:" HorizontalAlignment="Left" Margin="10,346,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Possible actions the enemy could take during the mission.." HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top"/>
-                        <Label Content="'The enemy will send scouts and small waves of infantry to determine our weak points before commiting any of their armour.'" HorizontalAlignment="Left" Margin="10,401,0,0" VerticalAlignment="Top"/>
+                        <Label Content="'The enemy will send scouts and small waves of infantry to determine our weak points before commiting any of their armour.'" HorizontalAlignment="Left" Margin="10,401,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                         <Label Content="'Once enemy tanks show up, we know they have started their main push.'" HorizontalAlignment="Left" Margin="10,416,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbPossibleEnemyActions" Height="22" Margin="10,442,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbPossibleEnemyActions" Height="22" Margin="10,442,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                         <Label Content="Defensive Fires:" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Enemy Artillery is listed here, otherwise put 'Unknown' or 'None'." HorizontalAlignment="Left" Margin="10,482,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,503,0,0" VerticalAlignment="Top"/>
                         <Label Content="'The enemy has mortar support.'" HorizontalAlignment="Left" Margin="10,521,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbDefensiveFires" Height="22" Margin="10,547,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbDefensiveFires" Height="22" Margin="10,547,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                         <Label Content="Enemy Air Presence:" HorizontalAlignment="Left" Margin="10,569,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Any enemy planes operating in the area, otherwise put 'Unknown' or 'None'." HorizontalAlignment="Left" Margin="10,587,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,608,0,0" VerticalAlignment="Top"/>
                         <Label Content="'Unknown, but the enemy has complete air dominance.'" HorizontalAlignment="Left" Margin="10,626,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbEnemyAirPresence" Height="22" Margin="10,652,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tbEnemyAirPresence" Height="22" Margin="10,652,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                         <Label Content="Future intentions:" HorizontalAlignment="Left" Margin="10,675,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="What are the goals of the enemy?" HorizontalAlignment="Left" Margin="10,693,0,0" VerticalAlignment="Top"/>
                         <Label Content="Example:" HorizontalAlignment="Left" Margin="10,714,0,0" VerticalAlignment="Top"/>
-                        <Label Content="'The Allies will want to cross the canal as quickly and painlessly as possible. If one sector puts up too much resistance, they'll try somewhere else.'" HorizontalAlignment="Left" Margin="10,732,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tbFutureIntentions" Height="22" Margin="10,758,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Label Content="'The Allies will want to cross the canal as quickly and painlessly as possible. If one sector puts up too much resistance, they'll try somewhere else.'" HorizontalAlignment="Left" Margin="10,732,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tbFutureIntentions" Height="22" Margin="10,758,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                     </Grid>
                 </ScrollViewer>
@@ -298,12 +302,31 @@
 
                 </Grid>
             </TabItem>
+            <!--
+            <TabItem Header="Start Text">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="All elements on this tab are optional." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
+                    <Label Content="The Start Text is a module that displays a piece of text at the beginning of a mission, in the bottom right corner of the screen." HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
+                    <Label Content="By filling in the boxes below, the Start Text module will be enabled. If you don't want to make use of it, leave this tab empty." HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
+                    <Label Content="The maximum amount of lines in the Start Text message is four. Fill in as many of the boxes as you like." HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
+
+                    <Label Content="Header:" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="tbStartTextHeader" Height="22" Margin="10,136,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Label Content="Line one:" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="tbStartTextLineOne" Height="22" Margin="10,191,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Label Content="Line two:" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="tbStartTextLineTwo" Height="22" Margin="10,246,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Label Content="Line three:" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="tbStartTextLineThree" Height="22" Margin="10,301,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            -->
         </TabControl>
-        <Label Content="What country will we be playing as?" HorizontalAlignment="Left" Margin="520,53,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1"/>
-        <RadioButton x:Name="rbGermany" Content="Germany" HorizontalAlignment="Left" Margin="520,76,0,0" VerticalAlignment="Top" IsChecked="true" Checked="RbGermany_Checked" Grid.Column="1"/>
-        <RadioButton x:Name="rbOther" Content="Other" HorizontalAlignment="Left" Margin="520,96,0,0" VerticalAlignment="Top" Checked="RbOther_Checked" Grid.Column="1"/>
-        <Button x:Name="btnGenerate" Content="Generate!" HorizontalAlignment="Left" Margin="398,53,0,0" VerticalAlignment="Top" 
+        <Label Content="What country will we be playing as?" HorizontalAlignment="Left" Margin="600,53,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1"/>
+        <RadioButton x:Name="rbGermany" Content="Germany" HorizontalAlignment="Left" Margin="600,76,0,0" VerticalAlignment="Top" IsChecked="true" Checked="RbGermany_Checked" Grid.Column="1"/>
+        <RadioButton x:Name="rbOther" Content="Other" HorizontalAlignment="Left" Margin="600,96,0,0" VerticalAlignment="Top" Checked="RbOther_Checked" Grid.Column="1"/>
+        <Button x:Name="btnGenerate" Content="Generate!" HorizontalAlignment="Left" Margin="478,53,0,0" VerticalAlignment="Top" 
                             Width="117" Height="35" FontWeight="Bold" FontSize="22" Padding="0,0,0,0" Click="BtnGenerate_Click" Grid.Column="1"/>
-        <Button x:Name="btnSelectFolder" Content="Select mission folder" HorizontalAlignment="Left" Margin="398,93,0,0" VerticalAlignment="Top" Width="117" Click="BtnSelectFolder_Click" Grid.Column="1"/>
+        <Button x:Name="btnSelectFolder" Content="Select mission folder" HorizontalAlignment="Left" Margin="478,93,0,0" VerticalAlignment="Top" Width="117" Click="BtnSelectFolder_Click" Grid.Column="1"/>
     </Grid>
 </Window>

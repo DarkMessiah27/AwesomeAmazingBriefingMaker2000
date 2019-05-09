@@ -11,6 +11,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
         public List<Tab> Tabs { get; set; }
         public Dictionary<int, List<string>> EndingMessages { get; set; }
+
         public Country Country { get; set; }
         
         public Briefing(Country country)

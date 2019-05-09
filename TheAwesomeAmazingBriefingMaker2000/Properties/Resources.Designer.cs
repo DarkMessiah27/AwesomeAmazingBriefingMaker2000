@@ -539,5 +539,14 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1.10.
+        /// </summary>
+        internal static string VersionNumber {
+            get {
+                return ResourceManager.GetString("VersionNumber", resourceCulture);
+            }
+        }
     }
 }

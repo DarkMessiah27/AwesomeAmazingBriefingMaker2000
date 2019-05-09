@@ -17,6 +17,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
     {
         private Briefing briefing;
         private FileWriter fw;
+        
 
         public MainWindow()
         {
@@ -30,6 +31,8 @@ namespace TheAwesomeAmazingBriefingMaker2000
             fw = new FileWriter();
 
             InitializeComponent();
+
+            this.Title = $"The Awesome Amazing Briefing Maker 2000 ({Properties.Resources.VersionNumber})";
         }
         
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
@@ -70,6 +73,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
             Dictionary<int, List<string>> endingMessages = new Dictionary<int, List<string>>();
             int messageCounter = 1;
+            bool firstDefeatMessageReached = false;
             // Cycle through each of the text boxes on the admin tab.
             foreach (TextBox tb in grAdminTab.Children.OfType<TextBox>())
             {
@@ -91,6 +95,12 @@ namespace TheAwesomeAmazingBriefingMaker2000
                         List<string> message = GetTextFromTextBox(grAdminTab.Children.OfType<TextBox>()
                             .Single(ch => ch.Name == "tb" + endingType + "Message" + endingNumber));
                         message.Add(endingType);
+
+                        if (endingType == "Defeat" && !firstDefeatMessageReached)
+                        {
+                            firstDefeatMessageReached = true;
+                            endingMessagesSection.Text.Add("");
+                        }
 
                         // Store the text of the button and the end screen in the dictionary, using the correct sqf format.
                         endingMessagesSection.Text.Add(string.Format(
@@ -200,11 +210,11 @@ namespace TheAwesomeAmazingBriefingMaker2000
             List<string> passwords = GetTextFromTextBox(tbPasswords);
 
             // Check for both the code words and passwords, if there were any actual entries in the text boxes.
-            bool hasCodeWords = ListIsJustWhiteSpace(codeWords);
-            bool hasPasswords = ListIsJustWhiteSpace(passwords);
+            bool hasNoCodeWords = ListIsJustWhiteSpace(codeWords);
+            bool hasNoPasswords = ListIsJustWhiteSpace(passwords);
 
             // The Codewords section is optional and will only be created if the user filled anything in.
-            if (hasCodeWords)
+            if (!hasNoCodeWords)
             {
                 // Check if a codewords section already exists.
                 // (This would be the case if the user clicks generate more than once)
@@ -231,7 +241,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
 
             // The Passwords section is optional and will only be created if the user filled anything in.
-            if (hasPasswords)
+            if (!hasNoPasswords)
             {
                 // Check if a passwords section already exists.
                 // (This would be the case if the user clicks generate more than once)
@@ -256,6 +266,10 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 if (passwordsSection != null)
                     briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Remove(passwordsSection);
             }
+            #endregion
+
+            #region Start Text
+            
             #endregion
 
             // Assign localised text to Signal tab where necessary.
@@ -325,7 +339,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
         //}
 
         /// <summary>
-        /// Extracts the text from a rich text box element.
+        /// Extracts the text from a text box element.
         /// </summary>
         /// <param name="tb"></param>
         /// <returns></returns>
