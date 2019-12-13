@@ -122,7 +122,7 @@
 _uid = getPlayerUID player;
 if (
 (_adminState != 0) ||
-(God isEqualTo player) ||
+(!isNil "God" &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}) ||
 (_uid == "76561198006804011") ||
 (_uid == "76561197989925440") ||
 (_uid == "76561197970317496") ||
@@ -140,13 +140,22 @@ NEWTAB("Admin Tab")
 &lt;br/&gt;
 &lt;br/&gt;This must NOT be used in missions that already have respawning enabled.
 &lt;br/&gt;    &lt;execute expression='FW_RespawnTickets = 1; publicVariable ""FW_RespawnTickets""; {setPlayerRespawnTime random 10;} remoteExec [""call""]; [{FW_RespawnTickets = 0; publicVariable ""FW_RespawnTickets""; 10e10 remoteExec [""setPlayerRespawnTime""]; },[],30] call CBA_fnc_waitAndExecute;'&gt;Call Respawn Wave&lt;/execute&gt;
+&lt;br/&gt;
+&lt;br/&gt;&lt;font color='#70db70' size='14'&gt;Helper Checks:&lt;/font&gt;//Server vars
+    &lt;br/&gt;These are anything the mission maker wants to be able to check in game.
+    &lt;br/&gt;
+    &lt;br/&gt;    &lt;execute expression='systemChat str westCasualty'&gt;Check Bluefor Casualty Percentage&lt;/execute&gt;
+    &lt;br/&gt;    &lt;execute expression='systemChat str eastCasualty'&gt;Check Opfor Casualty Percentage&lt;/execute&gt;
+    //&lt;br/&gt;    &lt;execute expression='systemChat str resistanceCasualty'&gt;Check Indfor Casualty Percentage&lt;/execute&gt;
+    //&lt;br/&gt;    &lt;execute expression='systemChat str civilianCasualty'&gt;Check Civilian Casualty Percentage&lt;/execute&gt;
+    &lt;br/&gt;    &lt;execute expression='systemChat str testVar'&gt;Test Boolean Handling&lt;/execute&gt;
 &lt;br/&gt;</value>
   </data>
   <data name="ClanName" xml:space="preserve">
     <value>2. Panzer-Division</value>
   </data>
   <data name="DefaultEnglishAttachments" xml:space="preserve">
-    <value>1x Tank crew</value>
+    <value>1x Heavy Weapons Team</value>
   </data>
   <data name="DefaultEnglishFriendlyComposition" xml:space="preserve">
     <value>1x Company consisting of:
@@ -154,15 +163,15 @@ NEWTAB("Admin Tab")
     1x Company HQ
     1x Reserve Section
 
-    2x Platoons, each consiting of:
+    1x Platoon, each consiting of:
         1x Platoon HQ
         3x Sections</value>
   </data>
   <data name="DefaultGermanAssets" xml:space="preserve">
-    <value>1x Panzerkampfwagen IV Ausf. H</value>
+    <value>4x Sonderkraftfahrzeug 251/1 "Hanomag"</value>
   </data>
   <data name="DefaultGermanAttachments" xml:space="preserve">
-    <value>1x Panzerbesatzung</value>
+    <value>1x Schwerer Waffen Trupp</value>
   </data>
   <data name="DefaultGermanFriendlyComposition" xml:space="preserve">
     <value>1x Kompanie consisting of:
@@ -170,7 +179,7 @@ NEWTAB("Admin Tab")
     1x Kompanietrupp
     1x Ersatztruppen
 
-    2x Züge, each consiting of:
+    1x Zug, each consiting of:
         1x Zugtrupp
         3x Gruppen</value>
   </data>
@@ -194,9 +203,7 @@ Please be careful as a single click will end the mission immediately.
 2-0: 2 Platoon HQ
 2-1: 2 Platoon, 1 Section
 2-2: 2 Platoon, 2 Section
-2-3: 2 Platoon, 3 Section
-
-Eva - The tank.</value>
+2-3: 2 Platoon, 3 Section</value>
   </data>
   <data name="EnglishEnemyForces" xml:space="preserve">
     <value>Enemy Forces</value>
@@ -238,9 +245,7 @@ Frequency 54.00 MHz - 2 Platoon Sub-Net</value>
 2-0: 2 Zug, Zugtrupp
 2-1: 2 Zug, 1 Gruppe
 2-2: 2 Zug, 2 Gruppe
-2-3: 2 Zug, 3 Gruppe
-
-Eva - The tank.</value>
+2-3: 2 Zug, 3 Gruppe</value>
   </data>
   <data name="GermanEnemyForces" xml:space="preserve">
     <value>Feindliche Kräfte</value>
@@ -335,6 +340,6 @@ White - Used for concealment only</value>
     <value>..\Resources\trident.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VersionNumber" xml:space="preserve">
-    <value>1.10</value>
+    <value>1.11</value>
   </data>
 </root>

@@ -18,7 +18,6 @@ namespace TheAwesomeAmazingBriefingMaker2000
         private Briefing briefing;
         private FileWriter fw;
         
-
         public MainWindow()
         {
             // Set the applicaton's culture info settings to British English, used for the spell check.

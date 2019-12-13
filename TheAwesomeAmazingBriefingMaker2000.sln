@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheAwesomeAmazingBriefingMaker2000", "TheAwesomeAmazingBriefingMaker2000\TheAwesomeAmazingBriefingMaker2000.csproj", "{A48A8DD8-EAF7-46E7-8B6A-BEB86752ED56}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BriefingMakerSetup", "BriefingMakerSetup\BriefingMakerSetup.vdproj", "{D5276D74-013F-4759-9222-325EE15935BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{A48A8DD8-EAF7-46E7-8B6A-BEB86752ED56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48A8DD8-EAF7-46E7-8B6A-BEB86752ED56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48A8DD8-EAF7-46E7-8B6A-BEB86752ED56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5276D74-013F-4759-9222-325EE15935BF}.Debug|Any CPU.ActiveCfg = Debug
+		{D5276D74-013F-4759-9222-325EE15935BF}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

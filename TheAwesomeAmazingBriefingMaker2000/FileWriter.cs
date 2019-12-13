@@ -11,10 +11,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
         private string briefingFilePath;
         private string endConditionsFilePath;
         private readonly string previousBriefingsPath = Directory.GetCurrentDirectory() + "\\Saved Briefings\\";
-
-        // Version number
-        private Version version = null;
-
+        
         public bool HasPaths { get; set; }
         
         public FileWriter()
@@ -112,7 +109,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
             else if (tab.Name == "Zeus Notes")
             {
-                tw.WriteLine("if (!isNil \"God\" && {God isEqualTo player}) then {");
+                tw.WriteLine("if (!isNil \"God\" && {God isEqualTo player || {group player isEqualTo group God}}) then {");
                 tw.WriteLine(string.Format("NEWTAB(\"{0}\")", tab.Name));
 
                 foreach (var section in tab.Sections)

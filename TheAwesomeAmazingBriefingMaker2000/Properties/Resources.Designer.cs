@@ -65,7 +65,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///_uid = getPlayerUID player;
         ///if (
         ///(_adminState != 0) ||
-        ///(God isEqualTo player) ||
+        ///(!isNil &quot;God&quot; &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}) ||
         ///(_uid == &quot;76561198006804011&quot;) ||
         ///(_uid == &quot;76561197989925440&quot;) ||
         ///(_uid == &quot;76561197970317496&quot;) ||
@@ -75,8 +75,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///) then {
         ///NEWTAB(&quot;Admin Tab&quot;)
         ///&lt;br/&gt;The server admin, the Zeus (if present), and all Council members have access to these options.
-        ///&lt;br/&gt;
-        ///&lt;br/&gt;&lt;font color=&apos;#70db70&apos; size=&apos;14&apos;&gt;Respawn Wave:&lt;/ [rest of string was truncated]&quot;;.
+        ///&lt;br [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ATRespawnWave {
             get {
@@ -94,7 +93,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1x Tank crew.
+        ///   Looks up a localized string similar to 1x Heavy Weapons Team.
         /// </summary>
         internal static string DefaultEnglishAttachments {
             get {
@@ -108,7 +107,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///    1x Company HQ
         ///    1x Reserve Section
         ///
-        ///    2x Platoons, each consiting of:
+        ///    1x Platoon, each consiting of:
         ///        1x Platoon HQ
         ///        3x Sections.
         /// </summary>
@@ -119,7 +118,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1x Panzerkampfwagen IV Ausf. H.
+        ///   Looks up a localized string similar to 4x Sonderkraftfahrzeug 251/1 &quot;Hanomag&quot;.
         /// </summary>
         internal static string DefaultGermanAssets {
             get {
@@ -128,7 +127,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1x Panzerbesatzung.
+        ///   Looks up a localized string similar to 1x Schwerer Waffen Trupp.
         /// </summary>
         internal static string DefaultGermanAttachments {
             get {
@@ -142,7 +141,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///    1x Kompanietrupp
         ///    1x Ersatztruppen
         ///
-        ///    2x Züge, each consiting of:
+        ///    1x Zug, each consiting of:
         ///        1x Zugtrupp
         ///        3x Gruppen.
         /// </summary>
@@ -184,9 +183,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///2-0: 2 Platoon HQ
         ///2-1: 2 Platoon, 1 Section
         ///2-2: 2 Platoon, 2 Section
-        ///2-3: 2 Platoon, 3 Section
-        ///
-        ///Eva - The tank..
+        ///2-3: 2 Platoon, 3 Section.
         /// </summary>
         internal static string EnglishCallSigns {
             get {
@@ -288,9 +285,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///2-0: 2 Zug, Zugtrupp
         ///2-1: 2 Zug, 1 Gruppe
         ///2-2: 2 Zug, 2 Gruppe
-        ///2-3: 2 Zug, 3 Gruppe
-        ///
-        ///Eva - The tank..
+        ///2-3: 2 Zug, 3 Gruppe.
         /// </summary>
         internal static string GermanCallSigns {
             get {
@@ -541,7 +536,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.10.
+        ///   Looks up a localized string similar to 1.11.
         /// </summary>
         internal static string VersionNumber {
             get {
