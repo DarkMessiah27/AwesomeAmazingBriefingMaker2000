@@ -103,7 +103,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
 
                         // Store the text of the button and the end screen in the dictionary, using the correct sqf format.
                         endingMessagesSection.Text.Add(string.Format(
-                            "<execute expression=\'{0}Message{1} call FNC_EndMissionRequest\'>{2}</execute>", 
+                            "<execute expression=\'{0}Message{1} call Olsen_FW_FNC_EndMissionRequest\'>{2}</execute>", 
                             endingType, messageCounter, buttonText));
                         endingMessages.Add(messageCounter, message);
 

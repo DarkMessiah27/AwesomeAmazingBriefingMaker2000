@@ -536,7 +536,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.11.
+        ///   Looks up a localized string similar to 1.1.1.
         /// </summary>
         internal static string VersionNumber {
             get {
