@@ -96,7 +96,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
         {
             if (tab.Name == "Admin Tab")
             {
-                tw.WriteLine(Properties.Resources.ATRespawnWave);
+                tw.WriteLine(Properties.Resources.AdminTabStaticText);
 
                 foreach (var section in tab.Sections)
                 {

@@ -77,9 +77,9 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///&lt;br/&gt;The server admin, the Zeus (if present), and all Council members have access to these options.
         ///&lt;br [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ATRespawnWave {
+        internal static string AdminTabStaticText {
             get {
-                return ResourceManager.GetString("ATRespawnWave", resourceCulture);
+                return ResourceManager.GetString("AdminTabStaticText", resourceCulture);
             }
         }
         
@@ -93,7 +93,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1x Heavy Weapons Team.
+        ///   Looks up a localized string similar to None.
         /// </summary>
         internal static string DefaultEnglishAttachments {
             get {
@@ -107,7 +107,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///    1x Company HQ
         ///    1x Reserve Section
         ///
-        ///    1x Platoon, each consiting of:
+        ///    2x Platoons, each consiting of:
         ///        1x Platoon HQ
         ///        3x Sections.
         /// </summary>
@@ -118,7 +118,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4x Sonderkraftfahrzeug 251/1 &quot;Hanomag&quot;.
+        ///   Looks up a localized string similar to 6x Sonderkraftfahrzeug 251/1 &quot;Hanomag&quot;.
         /// </summary>
         internal static string DefaultGermanAssets {
             get {
@@ -127,7 +127,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1x Schwerer Waffen Trupp.
+        ///   Looks up a localized string similar to None.
         /// </summary>
         internal static string DefaultGermanAttachments {
             get {
@@ -141,7 +141,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///    1x Kompanietrupp
         ///    1x Ersatztruppen
         ///
-        ///    1x Zug, each consiting of:
+        ///    2x Züge, each consiting of:
         ///        1x Zugtrupp
         ///        3x Gruppen.
         /// </summary>
@@ -275,7 +275,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HQ - Kompanietrupp
+        ///   Looks up a localized string similar to HQ - High command (Zeus)
         ///
         ///1-0: 1 Zug, Zugtrupp
         ///1-1: 1 Zug, 1 Gruppe
@@ -493,7 +493,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to сигнальная.
+        ///   Looks up a localized string similar to Информация.
         /// </summary>
         internal static string RussianSignals {
             get {
@@ -536,7 +536,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.1.1.
+        ///   Looks up a localized string similar to 1.1.2.
         /// </summary>
         internal static string VersionNumber {
             get {
