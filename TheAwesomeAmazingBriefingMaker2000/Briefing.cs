@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace TheAwesomeAmazingBriefingMaker2000
 {
     class Briefing
     {
-
         private readonly string[] headersWithLocalisation;
 
         public List<Tab> Tabs { get; set; }

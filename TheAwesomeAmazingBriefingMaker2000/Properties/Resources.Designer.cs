@@ -19,7 +19,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,21 +61,20 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _adminState = call BIS_fnc_admin;
-        ///_uid = getPlayerUID player;
+        ///   Looks up a localized string similar to private _adminState = call BIS_fnc_admin;
+        ///private _uid = getPlayerUID player;
         ///if (
         ///(_adminState != 0) ||
-        ///(!isNil &quot;God&quot; &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}) ||
-        ///(_uid == &quot;76561198006804011&quot;) ||
-        ///(_uid == &quot;76561197989925440&quot;) ||
-        ///(_uid == &quot;76561197970317496&quot;) ||
-        ///(_uid == &quot;76561197983143701&quot;) ||
-        ///(_uid == &quot;76561197985738940&quot;) ||
-        ///(_uid == &quot;76561198096113294&quot;)
+        ///{!isNil &quot;God&quot; &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}} ||
+        ///{_uid isEqualTo &quot;76561198006804011&quot;} ||
+        ///{_uid isEqualTo &quot;76561197989925440&quot;} ||
+        ///{_uid isEqualTo &quot;76561197970317496&quot;} ||
+        ///{_uid isEqualTo &quot;76561197983143701&quot;} ||
+        ///{_uid isEqualTo &quot;76561197985738940&quot;} ||
+        ///{_uid isEqualTo &quot;76561198096113294&quot;}
         ///) then {
         ///NEWTAB(&quot;Admin Tab&quot;)
-        ///&lt;br/&gt;The server admin, the Zeus (if present), and all Council members have access to these options.
-        ///&lt;br [rest of string was truncated]&quot;;.
+        ///&lt;br/&gt;The server admin, the Zeus (if present),  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AdminTabStaticText {
             get {
@@ -536,7 +535,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.1.2.
+        ///   Looks up a localized string similar to 1.1.3.
         /// </summary>
         internal static string VersionNumber {
             get {
