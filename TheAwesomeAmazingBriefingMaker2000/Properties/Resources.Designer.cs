@@ -66,15 +66,14 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///if (
         ///(_adminState != 0) ||
         ///{!isNil &quot;God&quot; &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}} ||
-        ///{_uid isEqualTo &quot;76561198006804011&quot;} ||
-        ///{_uid isEqualTo &quot;76561197989925440&quot;} ||
-        ///{_uid isEqualTo &quot;76561197970317496&quot;} ||
-        ///{_uid isEqualTo &quot;76561197983143701&quot;} ||
-        ///{_uid isEqualTo &quot;76561197985738940&quot;} ||
-        ///{_uid isEqualTo &quot;76561198096113294&quot;}
+        ///{_uid isEqualTo &quot;76561198006804011&quot;} || // Brauer
+        ///{_uid isEqualTo &quot;76561197989925440&quot;} || // Falk
+        ///{_uid isEqualTo &quot;76561197970317496&quot;} || // Haas
+        ///{_uid isEqualTo &quot;76561197983143701&quot;} || // Madsen
+        ///{_uid isEqualTo &quot;76561197985738940&quot;} || // Sauer
+        ///{_uid isEqualTo &quot;76561198096113294&quot;}    // Schuttler
         ///) then {
-        ///NEWTAB(&quot;Admin Tab&quot;)
-        ///&lt;br/&gt;The server admin, the Zeus (if present),  [rest of string was truncated]&quot;;.
+        ///// Thi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AdminTabStaticText {
             get {
@@ -535,7 +534,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.1.3.
+        ///   Looks up a localized string similar to 1.1.4.
         /// </summary>
         internal static string VersionNumber {
             get {

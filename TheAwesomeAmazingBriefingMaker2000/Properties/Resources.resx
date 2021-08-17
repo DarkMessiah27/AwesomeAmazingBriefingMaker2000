@@ -123,42 +123,68 @@ private _uid = getPlayerUID player;
 if (
 (_adminState != 0) ||
 {!isNil "God" &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}} ||
-{_uid isEqualTo "76561198006804011"} ||
-{_uid isEqualTo "76561197989925440"} ||
-{_uid isEqualTo "76561197970317496"} ||
-{_uid isEqualTo "76561197983143701"} ||
-{_uid isEqualTo "76561197985738940"} ||
-{_uid isEqualTo "76561198096113294"}
+{_uid isEqualTo "76561198006804011"} || // Brauer
+{_uid isEqualTo "76561197989925440"} || // Falk
+{_uid isEqualTo "76561197970317496"} || // Haas
+{_uid isEqualTo "76561197983143701"} || // Madsen
+{_uid isEqualTo "76561197985738940"} || // Sauer
+{_uid isEqualTo "76561198096113294"}    // Schuttler
 ) then {
+// This tab has clickable commands to allow the admin or zeus to end the mission.
+// More may be added by makin an entry here and adding a corresponding entry in the settings.sqf
 NEWTAB("Admin Tab")
-&lt;br/&gt;The server admin, the Zeus (if present), and all Council members have access to these options.
+&lt;br/&gt;The server admin, the zeus (if present), and all Council members have access to these options.
 &lt;br/&gt;
 &lt;br/&gt;&lt;font color='#70db70' size='14'&gt;Respawn Wave:&lt;/font&gt;
 &lt;br/&gt;This is used to call a respawn wave on demand, it will give the players in spectator a single respawn with a 10 second timer.
 &lt;br/&gt;
-&lt;br/&gt;If the admin is dead and in spectator they can also trigger a respawn by typing the admin only chat command &lt;font color='#FF8C00'&gt;#respawnWave&lt;/font&gt; in spectator chat.
-&lt;br/&gt;
 &lt;br/&gt;This must NOT be used in missions that already have respawning enabled.
-&lt;br/&gt;    &lt;execute expression='FW_RespawnTickets = 1; publicVariable ""FW_RespawnTickets""; {setPlayerRespawnTime random 10;} remoteExec [""call""]; [{FW_RespawnTickets = 0; publicVariable ""FW_RespawnTickets""; 10e10 remoteExec [""setPlayerRespawnTime""]; },[],30] call CBA_fnc_waitAndExecute;'&gt;Call Respawn Wave&lt;/execute&gt;
+&lt;br/&gt;   &lt;execute expression=' \
+			{FW_RespawnTickets = 1; setPlayerRespawnTime random 10;} remoteExec ['call',west]; [{{FW_RespawnTickets = 1; setPlayerRespawnTime 10e10;} remoteExec ['call',west];},[],30] call CBA_fnc_waitAndExecute; \
+		'&gt;Call Respawn Wave for Blufor&lt;/execute&gt;
+&lt;br/&gt;
+&lt;br/&gt;   &lt;execute expression=' \
+			{FW_RespawnTickets = 1; setPlayerRespawnTime random 10;} remoteExec ['call',east]; [{{FW_RespawnTickets = 1; setPlayerRespawnTime 10e10;} remoteExec ['call',east];},[],30] call CBA_fnc_waitAndExecute; \
+		'&gt;Call Respawn Wave for Opfor&lt;/execute&gt;
+&lt;br/&gt;
+&lt;br/&gt;   &lt;execute expression=' \
+			{FW_RespawnTickets = 1; setPlayerRespawnTime random 10;} remoteExec ['call',independent]; [{{FW_RespawnTickets = 1; setPlayerRespawnTime 10e10;} remoteExec ['call',independent];},[],30] call CBA_fnc_waitAndExecute; \
+		'&gt;Call Respawn Wave for Indfor&lt;/execute&gt;
+&lt;br/&gt;
+&lt;br/&gt;If the admin is dead and in spectator they can also trigger a respawn by typing one of these admin only chat commands in spectator chat:
+&lt;br/&gt;&lt;font color='#FF8C00'&gt;#respawnBlue&lt;/font&gt;
+&lt;br/&gt;&lt;font color='#FF8C00'&gt;#respawnRed&lt;/font&gt;
+&lt;br/&gt;&lt;font color='#FF8C00'&gt;#respawnGreen&lt;/font&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;&lt;font color='#70db70' size='14'&gt;Mission Ending:&lt;/font&gt;
+&lt;br/&gt;These are used to call the mission endings that the mission maker has set up
+&lt;br/&gt;
+&lt;br/&gt;Please be careful as a single click will end the mission immediately.
+&lt;br/&gt;
+&lt;br/&gt;   &lt;execute expression='victoryMessage call Olsen_FW_FNC_EndMissionRequest'&gt;Call Mission Victory&lt;/execute&gt;
+&lt;br/&gt;
+&lt;br/&gt;   &lt;execute expression='failureMessage call Olsen_FW_FNC_EndMissionRequest'&gt;Call Mission Failure&lt;/execute&gt;
+// An example of a custom ending
+// &lt;br/&gt;    &lt;execute expression='myCustomMessage call Olsen_FW_FNC_EndMissionRequest'&gt;Call My Custom Ending Example&lt;/execute&gt;
 &lt;br/&gt;
 &lt;br/&gt;If the mission cannot be ended by one of these buttons then the admin only chat command &lt;font color='#FF8C00'&gt;#endMission&lt;/font&gt; can be used.
 &lt;br/&gt;
 &lt;br/&gt;This can be done even from spectator.
 &lt;br/&gt;Any text following the command will be the end screen message.
 &lt;br/&gt;The html linebreak tag [br/] can be used to make it multiline.
-&lt;br/&gt;Remember to wrap it in angled brackets, square brackets are used for the example to avoid creating a linebreak in the briefing.
+&lt;br/&gt;
 &lt;br/&gt;For example:
 &lt;br/&gt;#endMission The enemy has been routed and we are victorious.[br/]Major Victory
 &lt;br/&gt;
-&lt;br/&gt;&lt;font color='#70db70' size='14'&gt;Helper Checks:&lt;/font&gt;//Server vars
-    &lt;br/&gt;These are anything the mission maker wants to be able to check in game.
-    &lt;br/&gt;
-    &lt;br/&gt;    &lt;execute expression='systemChat str westCasualty'&gt;Check Bluefor Casualty Percentage&lt;/execute&gt;
-    &lt;br/&gt;    &lt;execute expression='systemChat str eastCasualty'&gt;Check Opfor Casualty Percentage&lt;/execute&gt;
-    //&lt;br/&gt;    &lt;execute expression='systemChat str resistanceCasualty'&gt;Check Indfor Casualty Percentage&lt;/execute&gt;
-    //&lt;br/&gt;    &lt;execute expression='systemChat str civilianCasualty'&gt;Check Civilian Casualty Percentage&lt;/execute&gt;
-    &lt;br/&gt;    &lt;execute expression='systemChat str testVar'&gt;Test Boolean Handling&lt;/execute&gt;
-&lt;br/&gt;</value>
+&lt;br/&gt;&lt;font color='#70db70' size='14'&gt;Helper Checks:&lt;/font&gt;// Server vars
+&lt;br/&gt;These are anything the mission maker wants to be able to check in game.
+&lt;br/&gt;
+&lt;br/&gt;    &lt;execute expression='systemChat str westCasualty'&gt;Check Blufor Casualty Percentage&lt;/execute&gt;
+&lt;br/&gt;    &lt;execute expression='systemChat str eastCasualty'&gt;Check Opfor Casualty Percentage&lt;/execute&gt;
+// &lt;br/&gt;    &lt;execute expression='systemChat str resistanceCasualty'&gt;Check Indfor Casualty Percentage&lt;/execute&gt;
+// &lt;br/&gt;    &lt;execute expression='systemChat str civilianCasualty'&gt;Check Civilian Casualty Percentage&lt;/execute&gt;
+&lt;br/&gt;    &lt;execute expression='systemChat str testVar'&gt;Test Boolean Handling&lt;/execute&gt;</value>
   </data>
   <data name="ClanName" xml:space="preserve">
     <value>2. Panzer-Division</value>
@@ -349,6 +375,6 @@ White - Used for concealment only</value>
     <value>..\Resources\trident.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VersionNumber" xml:space="preserve">
-    <value>1.1.3</value>
+    <value>1.1.4</value>
   </data>
 </root>
