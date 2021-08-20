@@ -65,9 +65,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
             #endregion
 
             #region Admin Tab
-            // Set up the default text at the top of the admin tab first.
+            // Set up the default text that shows up above the ending messages first.
             Section endingMessagesSection = new Section(name: "Mission Ending:", fontColour: "#70db70", size: 14, text:
-                Properties.Resources.EndingMessagesText.Split('\n').ToList());
+                Properties.Resources.AdminTabEndingMessagesTextTop.Split('\n').ToList());
 
             Dictionary<int, List<string>> endingMessages = new Dictionary<int, List<string>>();
             int messageCounter = 1;
@@ -113,6 +113,9 @@ namespace TheAwesomeAmazingBriefingMaker2000
                     }
                 }
             }
+
+            // Add the message that shows up below the ending messages.
+            endingMessagesSection.Text.AddRange(Properties.Resources.AdminTabEndingMessagesTextBottom.Split('\n').ToList());
 
             // Check if the user filled in a valid number of ending conditions.
             // If not, show an error message and end generation.

@@ -61,6 +61,36 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///If the mission cannot be ended by one of these buttons then the admin only chat command &lt;font color=&apos;#FF8C00&apos;&gt;#endMission&lt;/font&gt; can be used.
+        ///
+        ///This can be done even from spectator.
+        ///Any text following the command will be the end screen message.
+        ///The html linebreak tag &amp;lt;br/&amp;gt; can be used to make it multiline.
+        ///
+        ///For example:
+        ///#endMission The enemy has been routed and we are victorious.&amp;lt;br/&amp;gt;Major Victory
+        ///.
+        /// </summary>
+        internal static string AdminTabEndingMessagesTextBottom {
+            get {
+                return ResourceManager.GetString("AdminTabEndingMessagesTextBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to These are used to call the mission endings that the mission maker has set up.
+        ///
+        ///Please be careful as a single click will end the mission immediately.
+        ///.
+        /// </summary>
+        internal static string AdminTabEndingMessagesTextTop {
+            get {
+                return ResourceManager.GetString("AdminTabEndingMessagesTextTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to private _adminState = call BIS_fnc_admin;
         ///private _uid = getPlayerUID player;
         ///if (
@@ -116,7 +146,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6x Sonderkraftfahrzeug 251/1 &quot;Hanomag&quot;.
+        ///   Looks up a localized string similar to 6x Sonderkraftfahrzeug 251/1.
         /// </summary>
         internal static string DefaultGermanAssets {
             get {
@@ -155,18 +185,6 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         internal static string EndingConditionsNotSetError {
             get {
                 return ResourceManager.GetString("EndingConditionsNotSetError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to These are used to call the mission endings that the mission maker has set up.
-        ///
-        ///Please be careful as a single click will end the mission immediately.
-        ///.
-        /// </summary>
-        internal static string EndingMessagesText {
-            get {
-                return ResourceManager.GetString("EndingMessagesText", resourceCulture);
             }
         }
         
@@ -534,7 +552,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.1.4.
+        ///   Looks up a localized string similar to 1.1.5.
         /// </summary>
         internal static string VersionNumber {
             get {
