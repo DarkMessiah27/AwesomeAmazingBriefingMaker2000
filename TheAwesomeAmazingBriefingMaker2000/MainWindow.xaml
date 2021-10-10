@@ -146,13 +146,13 @@
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top"/>
                     <Label Content="'0600hrs - 1. Kompanie will move from Oetzendorf to releave 5. Kompanie at the bridge.'" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top"/>
                     <Label Content="'0700hrs - 1. Kompanie will take up station at Klein Bunstorf.'" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbTimings" Height="140" Margin="10,306,522,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbTimings" Height="140" Margin="10,306,522,0" VerticalAlignment="Top" Text="None"/>
 
                     <Label Content="Control Measures:" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Any specific boundary areas." HorizontalAlignment="Left" Margin="10,463,0,0" VerticalAlignment="Top"/>
                     <Label Content="Example:" HorizontalAlignment="Left" Margin="10,481,0,0" VerticalAlignment="Top"/>
                     <Label Content="'Do not stray further south than Jastorf to prevent confusion and friendly fire incidents with 4. Kompanie.'" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbControlMeasures" Height="22" Margin="10,525,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbControlMeasures" Height="22" Margin="10,525,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="None"/>
 
                     <Label Content="Rules of Engagement:" HorizontalAlignment="Left" Margin="10,547,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="The rules of engagement. Only change these if they differ from the default!" HorizontalAlignment="Left" Margin="10,563,0,0" VerticalAlignment="Top"/>

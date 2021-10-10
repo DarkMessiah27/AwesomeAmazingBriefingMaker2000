@@ -36,7 +36,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
             // Check if the user has set the path to the mission folder before attempting to generate the briefing.
-            if (HasNotSetMissionPath())
+            if (!fw.HasPaths)
             {
                 MessageBox.Show(Properties.Resources.PathNotSetErrorMessage, "Error!");
                 return;
@@ -210,12 +210,8 @@ namespace TheAwesomeAmazingBriefingMaker2000
             List<string> codeWords = GetTextFromTextBox(tbCodewords);
             List<string> passwords = GetTextFromTextBox(tbPasswords);
 
-            // Check for both the code words and passwords, if there were any actual entries in the text boxes.
-            bool hasNoCodeWords = ListIsJustWhiteSpace(codeWords);
-            bool hasNoPasswords = ListIsJustWhiteSpace(passwords);
-
             // The Codewords section is optional and will only be created if the user filled anything in.
-            if (!hasNoCodeWords)
+            if (!codeWords.All(s => s == "Unknown"))
             {
                 // Check if a codewords section already exists.
                 // (This would be the case if the user clicks generate more than once)
@@ -242,7 +238,7 @@ namespace TheAwesomeAmazingBriefingMaker2000
             }
 
             // The Passwords section is optional and will only be created if the user filled anything in.
-            if (!hasNoPasswords)
+            if (!passwords.All(s => s == "Unknown"))
             {
                 // Check if a passwords section already exists.
                 // (This would be the case if the user clicks generate more than once)
@@ -267,10 +263,6 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 if (passwordsSection != null)
                     briefing.Tabs.Find(t => t.Name.Contains("Signals")).Sections.Remove(passwordsSection);
             }
-            #endregion
-
-            #region Start Text
-            
             #endregion
 
             // Assign localised text to Signal tab where necessary.
@@ -348,12 +340,20 @@ namespace TheAwesomeAmazingBriefingMaker2000
         {
             List<string> lines = tb.Text.Split('\n').ToList();
 
-            for (int i = 0; i < lines.Count; i++)
+            if (lines.All(s => s == ""))
             {
-                lines[i] = lines[i].Replace("\r", "");
+                lines = new List<string> { "Unknown" };
+                return lines;
             }
+            else
+            {
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    lines[i] = lines[i].Replace("\r", "");
+                }
 
-            return lines;
+                return lines;
+            }
         }
 
         private void RbGermany_Checked(object sender, RoutedEventArgs e)
@@ -495,34 +495,6 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 return true;
             
             return false;
-        }
-
-        /// <summary>
-        /// Checks if the filewrites already has paths to the relevant sqf files.
-        /// </summary>
-        /// <returns></returns>
-        private bool HasNotSetMissionPath()
-        {
-            if (fw.HasPaths)
-                return false;
-            else
-                return true;
-        }
-
-        /// <summary>
-        /// Checks if a list only contains empty or whitespace strings.
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        private bool ListIsJustWhiteSpace(List<string> list)
-        {
-            foreach (string s in list)
-            {
-                if (string.IsNullOrWhiteSpace(s) == false)
-                    return false;
-            }
-
-            return true;
         }
     }
 }
