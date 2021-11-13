@@ -98,7 +98,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         ///{!isNil &quot;God&quot; &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}} ||
         ///{_uid isEqualTo &quot;76561198006804011&quot;} || // Brauer
         ///{_uid isEqualTo &quot;76561197989925440&quot;} || // Falk
-        ///{_uid isEqualTo &quot;76561197970317496&quot;} || // Haas
+        ///{_uid isEqualTo &quot;76561198028284438&quot;} || // Feld
         ///{_uid isEqualTo &quot;76561197983143701&quot;} || // Madsen
         ///{_uid isEqualTo &quot;76561197985738940&quot;} || // Sauer
         ///{_uid isEqualTo &quot;76561198096113294&quot;}    // Schuttler
@@ -552,7 +552,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.1.6.
+        ///   Looks up a localized string similar to 1.1.7.
         /// </summary>
         internal static string VersionNumber {
             get {

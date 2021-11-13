@@ -143,7 +143,7 @@ if (
 {!isNil "God" &amp;&amp; {God isEqualTo player || {group player isEqualTo group God}}} ||
 {_uid isEqualTo "76561198006804011"} || // Brauer
 {_uid isEqualTo "76561197989925440"} || // Falk
-{_uid isEqualTo "76561197970317496"} || // Haas
+{_uid isEqualTo "76561198028284438"} || // Feld
 {_uid isEqualTo "76561197983143701"} || // Madsen
 {_uid isEqualTo "76561197985738940"} || // Sauer
 {_uid isEqualTo "76561198096113294"}    // Schuttler
@@ -366,6 +366,6 @@ White - Used for concealment only</value>
     <value>..\Resources\trident.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VersionNumber" xml:space="preserve">
-    <value>1.1.6</value>
+    <value>1.1.7</value>
   </data>
 </root>

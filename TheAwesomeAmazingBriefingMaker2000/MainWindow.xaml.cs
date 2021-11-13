@@ -331,31 +331,6 @@ namespace TheAwesomeAmazingBriefingMaker2000
         //    }
         //}
 
-        /// <summary>
-        /// Extracts the text from a text box element.
-        /// </summary>
-        /// <param name="tb"></param>
-        /// <returns></returns>
-        private List<string> GetTextFromTextBox(TextBox tb)
-        {
-            List<string> lines = tb.Text.Split('\n').ToList();
-
-            if (lines.All(s => s == ""))
-            {
-                lines = new List<string> { "Unknown" };
-                return lines;
-            }
-            else
-            {
-                for (int i = 0; i < lines.Count; i++)
-                {
-                    lines[i] = lines[i].Replace("\r", "");
-                }
-
-                return lines;
-            }
-        }
-
         private void RbGermany_Checked(object sender, RoutedEventArgs e)
         {
             briefing.Country = Country.Germany;
@@ -495,6 +470,55 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 return true;
             
             return false;
+        }
+
+        /// <summary>
+        /// Extracts the text from a text box element.
+        /// </summary>
+        /// <param name="tb"></param>
+        /// <returns></returns>
+        private List<string> GetTextFromTextBox(TextBox tb)
+        {
+            List<string> lines = tb.Text.Split('\n').ToList();
+
+            if (lines.All(s => s == ""))
+            {
+                lines = new List<string> { "Unknown" };
+                return lines;
+            }
+            else
+            {
+                return SanitizeListOfStrings(lines);
+            }
+        }
+
+        /// <summary>
+        /// Removes certain characters and elements from a list of strings that the Arma sqf briefing format can't handle or render properly.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private List<string> SanitizeListOfStrings(List<string> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[0] = SanitizeString(list[0]);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Removes certain characters and elements from a string that the Arma sqf briefing format can't handle or render properly.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string SanitizeString(string str)
+        {
+            str = str.Replace("\r", "");
+            str = str.Replace("<", "&lt;");
+            str = str.Replace(">", "&gt;");
+
+            return str;
         }
     }
 }
