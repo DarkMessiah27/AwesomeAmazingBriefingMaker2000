@@ -3,14 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TheAwesomeAmazingBriefingMaker2000.Briefings;
 
-namespace TheAwesomeAmazingBriefingMaker2000
+namespace TheAwesomeAmazingBriefingMaker2000.General
 {
-    class FileWriter
+    internal class FileWriter
     {
         private string briefingFilePath;
         private string endConditionsFilePath;
-        private readonly string previousBriefingsPath = Directory.GetCurrentDirectory() + "\\Saved Briefings\\";
+        private string loadoutsFilePath;
+        private string geardefsFilePath;
+        //private readonly string previousBriefingsPath = Directory.GetCurrentDirectory() + "\\Saved Briefings\\";
         
         public bool HasPaths { get; set; }
         
@@ -36,6 +39,8 @@ namespace TheAwesomeAmazingBriefingMaker2000
                 {
                     briefingFilePath = dlg.SelectedPath + "\\customization\\briefing.sqf";
                     endConditionsFilePath = dlg.SelectedPath + "\\customization\\endConditions.sqf";
+                    loadoutsFilePath = dlg.SelectedPath + "\\customization\\loadouts.sqf";
+                    geardefsFilePath = dlg.SelectedPath + "\\customization\\geardefs.sqf";
 
                     HasPaths = true;
                 }

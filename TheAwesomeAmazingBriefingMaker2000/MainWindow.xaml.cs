@@ -6,6 +6,9 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
+using TheAwesomeAmazingBriefingMaker2000.Briefings;
+using TheAwesomeAmazingBriefingMaker2000.Briefings.BriefingComponents;
+using TheAwesomeAmazingBriefingMaker2000.General;
 
 namespace TheAwesomeAmazingBriefingMaker2000
 {
@@ -14,8 +17,8 @@ namespace TheAwesomeAmazingBriefingMaker2000
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Briefing briefing;
-        private FileWriter fw;
+        private readonly Briefing briefing;
+        private readonly FileWriter fw;
         
         public MainWindow()
         {
@@ -55,9 +58,14 @@ namespace TheAwesomeAmazingBriefingMaker2000
             // The app will go over each tab in the UI, finding and editing the appropriate Tab and Section objects of the 
             // briefing object. Most of these Tabs and Sections were setup in advance when the briefing object was created.
             //
+            // It also edits several other files to set certain settings, namely: endConditions, loadouts, and geardefs.
+            //
             // ------------------------------------------------------------------------------------------------------------
 
             #region Mission Notes
+
+            var missionNotes = new MissionNotes();
+
             briefing.Tabs.Find(t => t.Name.Contains("Mission Notes"))
                 .Sections.Find(s => s.Name == "Victory Conditions:").Text = GetTextFromTextBox(tbVictoryConditions);
             briefing.Tabs.Find(t => t.Name.Contains("Mission Notes"))

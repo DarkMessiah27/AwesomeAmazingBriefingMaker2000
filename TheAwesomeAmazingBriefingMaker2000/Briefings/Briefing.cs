@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TheAwesomeAmazingBriefingMaker2000
+namespace TheAwesomeAmazingBriefingMaker2000.Briefings
 {
-    class Briefing
+    internal class Briefing
     {
         private readonly string[] headersWithLocalisation;
 
@@ -134,8 +134,6 @@ namespace TheAwesomeAmazingBriefingMaker2000
                         default:
                             return "";
                     }
-                case Country.Japan:
-                    // Not yet supported. Falls through to default case.
                 default:
                     switch (headerName)
                     {

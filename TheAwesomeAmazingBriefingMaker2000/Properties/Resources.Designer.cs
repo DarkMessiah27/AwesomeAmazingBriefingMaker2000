@@ -19,7 +19,7 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -406,60 +406,6 @@ namespace TheAwesomeAmazingBriefingMaker2000.Properties {
         internal static string IOErrorMessage {
             get {
                 return ResourceManager.GetString("IOErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tekigun.
-        /// </summary>
-        internal static string JapaneseEnemyForces {
-            get {
-                return ResourceManager.GetString("JapaneseEnemyForces", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Yuukouteki na riki.
-        /// </summary>
-        internal static string JapaneseFriendlyForces {
-            get {
-                return ResourceManager.GetString("JapaneseFriendlyForces", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chisei.
-        /// </summary>
-        internal static string JapaneseIntelligence {
-            get {
-                return ResourceManager.GetString("JapaneseIntelligence", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mokuteki.
-        /// </summary>
-        internal static string JapaneseMission {
-            get {
-                return ResourceManager.GetString("JapaneseMission", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shingou.
-        /// </summary>
-        internal static string JapaneseSignals {
-            get {
-                return ResourceManager.GetString("JapaneseSignals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Joukyou.
-        /// </summary>
-        internal static string JapaneseSituation {
-            get {
-                return ResourceManager.GetString("JapaneseSituation", resourceCulture);
             }
         }
         

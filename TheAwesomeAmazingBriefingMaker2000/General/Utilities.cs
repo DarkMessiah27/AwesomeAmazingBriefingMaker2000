@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheAwesomeAmazingBriefingMaker2000
+namespace TheAwesomeAmazingBriefingMaker2000.General
 {
     static class Utilities
     {

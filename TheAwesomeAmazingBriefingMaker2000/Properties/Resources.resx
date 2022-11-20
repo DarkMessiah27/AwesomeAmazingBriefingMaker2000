@@ -313,24 +313,6 @@ Spamming Q and E, aka the 'friendly dance' - I'm friendly, don't shoot me</value
   <data name="IOErrorMessage" xml:space="preserve">
     <value>Could not find the briefing.sqf or endConditions.sqf. Please make sure you select the root folder of your mission (the folder that has the mission.sqm in it).</value>
   </data>
-  <data name="JapaneseEnemyForces" xml:space="preserve">
-    <value>Tekigun</value>
-  </data>
-  <data name="JapaneseFriendlyForces" xml:space="preserve">
-    <value>Yuukouteki na riki</value>
-  </data>
-  <data name="JapaneseIntelligence" xml:space="preserve">
-    <value>Chisei</value>
-  </data>
-  <data name="JapaneseMission" xml:space="preserve">
-    <value>Mokuteki</value>
-  </data>
-  <data name="JapaneseSignals" xml:space="preserve">
-    <value>Shingou</value>
-  </data>
-  <data name="JapaneseSituation" xml:space="preserve">
-    <value>Joukyou</value>
-  </data>
   <data name="PathNotSetErrorMessage" xml:space="preserve">
     <value>You need to set the path to your mission folder first! Please click the "Select mission folder" button and select the root folder of your mission (the folder with the mission.sqm in it).</value>
   </data>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TheAwesomeAmazingBriefingMaker2000
+namespace TheAwesomeAmazingBriefingMaker2000.Briefings
 {
     class Section
     {

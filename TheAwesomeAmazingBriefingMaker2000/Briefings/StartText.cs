@@ -1,4 +1,4 @@
-﻿namespace TheAwesomeAmazingBriefingMaker2000
+﻿namespace TheAwesomeAmazingBriefingMaker2000.Briefings
 {
     internal class StartText
     {
